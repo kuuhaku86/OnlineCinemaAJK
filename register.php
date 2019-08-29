@@ -45,15 +45,15 @@
 
         <!-- Form Register -->
         <div class="register">
-            <form action="insert.php" method="POST" encytype="multipart/form-data">
+            <form action="" method="POST" encytype="multipart/form-data">
                 <b> <h1>Username</h1> </b>
                 <p> <input type="text" title="username" name="username" /> </p>
                 <b> <h1>Password</h1> </b>
                 <p> <input type="Password" title="password" name="password" /> </p>
                 <b> <h1>Confirm Password</h1> </b>
-                <p> <input type="Password" title="password" name="password" > </p>
+                <p> <input type="Password" title="password" name="confirmPassword" > </p>
                 <b> <h2>Foto Profile</h2> </b>
-                <p> <input style="border:none;" type="file" title="file" name="file"/> </p>
+                <p> <input style="border:none;" type="file" title="file" name="gambar"/> </p>
                 <p> <button type="submit" class="btn">Submit</button> </p>
             </form>
         </div>
