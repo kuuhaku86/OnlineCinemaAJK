@@ -110,13 +110,12 @@
 
     /* Form Register */
     .register{
+        position: relative;
+        z-index: 1;
         width: 350px;
         height: 400px;
-        /* top: 100px;
-        right: 300px;
-        bottom: 20px; */
         right: 50%;
-        bottom: 50px;
+        bottom: 60px;
         left: 50%;
         position: absolute; 
         opacity: 0.6;
@@ -125,7 +124,7 @@
         box-sizing: border-box;
         font-family: 'Roboto Mono', monospace;
         line-height: 32px;
-        padding: 50px 45px;
+        padding: 40px 45px;
     }
     
     .register input{
@@ -161,11 +160,67 @@
     
     .register h1{
         font-size: 14px;
-        margin-bottom: -1px;
+        margin-bottom: -3px;
     }
 
     .register h2{
         font-size: 14px;
+    }
+
+    /* Form Login */
+    .login{
+        position: relative;
+        z-index: 1;
+        width: 350px;
+        height: 280px;
+        right: 50%;
+        bottom: 110px;
+        left: 50%;
+        position: absolute; 
+        opacity: 0.6;
+        background-color: black;
+        color: white;
+        box-sizing: border-box;
+        font-family: 'Roboto Mono', monospace;
+        line-height: 32px;
+        padding: 50px 45px;
+    }
+    
+    .login input{
+        width: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        border-bottom: 1px solid white; 
+        color:white;
+        margin-bottom: 10px;
+    } 
+
+    .login select{
+        width: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        border-bottom: 1px solid white; 
+        height: 25px;
+        margin-bottom: 15px;
+        color:white;
+    } 
+    
+    .login select::before{
+        content: '';
+        background: red;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 100px;
+        pointer-events: none;
+    } 
+    
+    .login h1{
+        font-size: 14px;
+        margin-bottom: -3px;
     }
 
     /* Button */
@@ -178,7 +233,19 @@
         color: white;
         padding: 5px;
         font-family: 'Roboto Mono', monospace;
-        margin-top: 6px;
+        margin-top: 10px;
+    }
+
+    .btn-login{
+        line-height: 15px;
+        height: 35px;
+        width: 100%;
+        background: transparent;
+        border: 1px solid white;
+        color: white;
+        padding: 5px;
+        font-family: 'Roboto Mono', monospace;
+        margin-top: 17px;
     }
 
     .btn-coba{
@@ -193,10 +260,10 @@
         font-family: 'Roboto Mono', monospace;
     }
     
-    .btn-login{
+    .btn-register{
         position: relative;
-        left: 230px;
-        top: 40px; 
+        left: 180px;
+        top: 55px; 
         background: rgba(0,0,0,0.2);
         border: 1px solid white;
         border-radius: 30px;

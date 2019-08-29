@@ -36,25 +36,22 @@
         <!-- Jumbotron -->
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4_register">Register</h1>
+                <h1 class="display-4_register">Login</h1>
                 <div class="lead_register">
-                    <p> Selamat Mendaftar </p>
+                    <p> Belum punya akun? </p>
                 </div>
+                <p> <a href="register.php" class="btn-register">Register</a> </p>
             </div>
         </div>
 
         <!-- Form Register -->
-        <div class="register">
-            <form action="insert.php" method="POST" encytype="multipart/form-data">
+        <div class="login">
+            <form action="insert.php" method="POST">
                 <b> <h1>Username</h1> </b>
                 <p> <input type="text" title="username" name="username" /> </p>
                 <b> <h1>Password</h1> </b>
                 <p> <input type="Password" title="password" name="password" /> </p>
-                <b> <h1>Confirm Password</h1> </b>
-                <p> <input type="Password" title="password" name="password" > </p>
-                <b> <h2>Foto Profile</h2> </b>
-                <p> <input style="border:none;" type="file" title="file" name="file"/> </p>
-                <p> <button type="submit" class="btn">Submit</button> </p>
+                <p> <button type="submit" class="btn-login">Submit</button> </p>
             </form>
         </div>
     </body>
