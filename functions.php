@@ -1,41 +1,58 @@
 <?php 
     $dbh = new PDO('mysql:host=localhost;dbname=onlinecinemaajk',"root","");
 
+    function query($query){
+        global $dbh;
+        $result = $dbh->prepare($query);
+        $rows = [];
+        while ($row = $result->fetch()){
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
     function upload() {
+        global $dbh;
         $filename = $_FILES['gambar']['name'];
         $filesize = $_FILES['gambar']['size'];
         $error = $_FILES['gambar']['error'];
         $tmpName = $_FILES['gambar']['tmp_name'];
-
+        $newFileName = "";
         if($error === 4 ) {
-            return "default.png";
-        }
+            $newFileName = "default.png";
+        }else{
 
-        $imageExtensionValid = ['jpg','jpeg', 'png'];
-        $imageExtension = explode('.',$filename);
-        $imageExtension = strtolower(end($imageExtension));
-        
-        if(!in_array($imageExtension,$imageExtensionValid)){
-            echo "
+            $imageExtensionValid = ['jpg','jpeg', 'png'];
+            $imageExtension = explode('.',$tmpName);
+            $imageExtension = strtolower(end($imageExtension));
+            if(!in_array($imageExtension,$imageExtensionValid)){
+                echo "
+                <script>
+                    alert('Please upload the allowed image extensions (jpg, jpeg, png)');
+                </script>";
+                return false;
+            }
+            if(!$imageExtensionInArray){
+                echo "
                 <script>
                     alert('Please upload the allowed image extensions (jpg, jpeg, png)');
                 </script>
             ";
-            return false;
-        }
-        
-        if($filesize > 5000000) {
-            echo "
-                <script>
-                    alert('Image's size is too big (>2 mb)');
-                </script>
-            ";
-            return false;
+            }
+            if($filesize > 5000000) {
+                echo "
+                    <script>
+                        alert('Image's size is too big (>2 mb)');
+                    </script>
+                ";
+                // return false;
+            }
+    
+            $newFileName = uniqid().".".$imageExtension;
+    
+            move_uploaded_file($tmpName, "img/".$newFileName);
         }
 
-        $newFileName = uniqid().".".$imageExtension;
-
-        move_uploaded_file($tmpName, "img/".$newFileName);
         return $newFileName;
     }
 
@@ -49,8 +66,6 @@
         if(!$gambar)return false;
 
         $cekUsername = $dbh->prepare("SELECT username FROM users WHERE username = :username")->fetch();
-        $stmt->exec(['username' => $username]);
-        $cekUsername = $stmt->fetch();
         if($cekUsername){
             echo "
             <script>
@@ -71,6 +86,6 @@
 
         $password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $dbh->prepare("INSERT INTO users (username,password,gambar) VALUES (:username,:password,:gambar)" );
-        $stmt->exec(['username' => $username,'password' => $password, 'gambar' => $gambar]);
+        $stmt->execute(['username' => $username,'password' => $password, 'gambar' => $gambar]);
         return $stmt->rowCount();
     }

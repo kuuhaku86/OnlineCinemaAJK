@@ -1,5 +1,18 @@
 <?php
     include "bootstrap.php";
+    require 'functions.php';
+    if(isset($_POST["register"])){
+        if(register($_POST) > 0) {
+            echo "
+                <script>
+                    alert('User baru telah dibuat');
+                </script>
+            ";
+            header("Location: login.php");
+        }else{
+            print_r($dbh->errorInfo());
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -45,16 +58,16 @@
 
         <!-- Form Register -->
         <div class="register">
-            <form action="" method="POST" encytype="multipart/form-data">
+            <form action="" method="POST" enctype="multipart/form-data">
                 <b> <h1>Username</h1> </b>
                 <p> <input type="text" title="username" name="username" /> </p>
                 <b> <h1>Password</h1> </b>
                 <p> <input type="Password" title="password" name="password" /> </p>
                 <b> <h1>Confirm Password</h1> </b>
-                <p> <input type="Password" title="password" name="confirmPassword" > </p>
+                <p> <input type="Password" title="password" name="passwordConfirm" > </p>
                 <b> <h2>Foto Profile</h2> </b>
-                <p> <input style="border:none;" type="file" title="file" name="gambar"/> </p>
-                <p> <button type="submit" class="btn">Submit</button> </p>
+                <p> <input type="file"  name="gambar" id="gambar"/> </p>
+                <p> <button type="submit" name="register" class="btn">Submit</button> </p>
             </form>
         </div>
     </body>
