@@ -23,7 +23,7 @@
         }else{
 
             $imageExtensionValid = ['jpg','jpeg', 'png'];
-            $imageExtension = explode('.',$tmpName);
+            $imageExtension = explode('.',$filename);
             $imageExtension = strtolower(end($imageExtension));
             if(!in_array($imageExtension,$imageExtensionValid)){
                 echo "
@@ -31,13 +31,6 @@
                     alert('Please upload the allowed image extensions (jpg, jpeg, png)');
                 </script>";
                 return false;
-            }
-            if(!$imageExtensionInArray){
-                echo "
-                <script>
-                    alert('Please upload the allowed image extensions (jpg, jpeg, png)');
-                </script>
-            ";
             }
             if($filesize > 5000000) {
                 echo "
@@ -65,7 +58,9 @@
         $gambar = upload();
         if(!$gambar)return false;
 
-        $cekUsername = $dbh->prepare("SELECT username FROM users WHERE username = :username")->fetch();
+        $cekUsername = $dbh->prepare("SELECT username FROM users WHERE username=?");
+        $cekUsername->execute([$username]);
+        $cekUsername = $cekUsername->fetch();
         if($cekUsername){
             echo "
             <script>

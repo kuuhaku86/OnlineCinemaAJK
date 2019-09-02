@@ -1,5 +1,37 @@
 <?php
+    session_start();
     include "bootstrap.php";
+    require "functions.php";
+    if(isset($_SESSION["login"])){
+        header("Location: homepage.php");
+        exit;
+    }
+
+    if(isset($_POST['login'])){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $res = $dbh->prepare("SELECT * FROM users WHERE username=?");
+        $res->execute([$username]);
+        $res = $res->fetch();
+        if($res){
+            if(password_verify($password,$res['password'])){
+                $_SESSION['login']=true;
+                header("Location: homepage.php");
+                exit;
+            }else{
+                echo "
+                <script>
+                    alert('Password Anda salah');
+                </script>";
+            }
+        }else{
+            echo "
+                <script>
+                    alert('Username tidak ditemukan');
+                </script>";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +55,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Login <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="login.php">Login <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="register.php">Register <span class="sr-only">(current)</span></a>
@@ -46,12 +78,12 @@
 
         <!-- Form Register -->
         <div class="login">
-            <form action="insert.php" method="POST">
+            <form action="" method="POST">
                 <b> <h1>Username</h1> </b>
                 <p> <input type="text" title="username" name="username" /> </p>
                 <b> <h1>Password</h1> </b>
                 <p> <input type="Password" title="password" name="password" /> </p>
-                <p> <button type="submit" class="btn-login">Submit</button> </p>
+                <p> <button type="submit" class="btn-login" name="login">Submit</button> </p>
             </form>
         </div>
     </body>
