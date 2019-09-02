@@ -55,30 +55,31 @@
         $username = strtolower(htmlspecialchars(stripslashes($data["username"])));
         $password = $data["password"];
         $passwordConfirm = $data["passwordConfirm"];
-        $gambar = upload();
-        if(!$gambar)return false;
-
+        
         $cekUsername = $dbh->prepare("SELECT username FROM users WHERE username=?");
         $cekUsername->execute([$username]);
         $cekUsername = $cekUsername->fetch();
         if($cekUsername){
             echo "
             <script>
-                alert('Username telah terpakai');
+            alert('Username telah terpakai');
             </script>
             ";
             return false;
         }
-
+        
         if($password !== $passwordConfirm) {
             echo "
-                <script>
-                    alert('password tidak sama');
-                </script>
+            <script>
+            alert('password tidak sama');
+            </script>
             ";
             return false;
         }
-
+        
+        $gambar = upload();
+        if(!$gambar)return false;
+        
         $password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $dbh->prepare("INSERT INTO users (username,password,gambar) VALUES (:username,:password,:gambar)" );
         $stmt->execute(['username' => $username,'password' => $password, 'gambar' => $gambar]);
