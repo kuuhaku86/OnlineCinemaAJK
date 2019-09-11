@@ -26,11 +26,23 @@
             </div>
         </nav>
 
+        <!-- Foto Profil -->
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="profile.png" alt="..." class="img-thumbnail">
+                    <div class="hi">
+                        <p> Hi Zahramillah </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Jumbotron -->
         <div class="jumbotron3 jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">WELCOME ROOM MASTER</h1>
-                <p> <a href="#" class="btn-upload">Upload File</a> </p>
+                <p> <a href="#" class="btn-upload">Upload Movie</a> </p>
                 <p> <a href="#" class="btn-update">Update</a> </p>
             </div>
         </div>

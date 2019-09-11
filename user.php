@@ -26,6 +26,18 @@
             </div>
         </nav>
 
+        <!-- Foto Profil -->
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="profile.png" alt="..." class="img-thumbnail">
+                    <div class="hi">
+                        <p> Hi Zahramillah </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Jumbotron -->
         <div class="jumbotron2 jumbotron-fluid">
             <div class="container">
