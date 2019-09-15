@@ -10,4 +10,8 @@ Jobdesk pertama: <br>
 
 Update Jobdesk: <br>
   Zahra : 2 halaman homepage, satu untuk jika di room sudah ada orang (tombol join room, tampilan gambar profile picture dan nama user), yang satu jika di room belum ada orang(room master, fitur: form untuk upload video, tombol start film, gambar profile picture dan nama room master) <br>
-  Yohan : Mengatur sistem untuk homepage jika room master atau bukan <br>
+  Yohan : Mengatur sistem untuk homepage jika room master atau bukan <br><br>
+  
+Update Jobdesk: <br>
+  Zahra : membuat halaman untuk landing ke movie room, dan add logout tombol di homepage.php<br>
+  Yohan : membuat sistem logout<br>
