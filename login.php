@@ -10,13 +10,25 @@
     if(isset($_POST['login'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
-
         $res = $dbh->prepare("SELECT * FROM users WHERE username=?");
         $res->execute([$username]);
         $res = $res->fetch();
         if($res){
             if(password_verify($password,$res['password'])){
+                $id_user = $res['id'];
+                $gambar = $res['gambar'];
                 $_SESSION['login']=true;
+                $res = $dbh->query("SELECT * FROM room")->fetchColumn();
+                echo($res);
+                if($res==0){
+                    $stmt = $dbh->prepare("INSERT INTO room (id_user,user,gambar,roles) VALUES(:id_user,:user,:gambar,:roles)");
+                    $stmt->execute(['id_user' => $id_user,'user' => $username, 'gambar' => $gambar, 'roles' => 'master']);
+                }
+                else {
+                    $stmt = $dbh->prepare("INSERT INTO room (id_user,user,gambar,roles) VALUES(:id_user,:user,:gambar,:roles)");
+                    $stmt->execute(['id_user' => $id_user,'user' => $username, 'gambar' => $gambar, 'roles' => 'user']);
+                }
+                $_SESSION['id']=$id_user;
                 header("Location: homepage.php");
                 exit;
             }else{
