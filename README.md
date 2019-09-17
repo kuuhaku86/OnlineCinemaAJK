@@ -17,4 +17,4 @@ Update Jobdesk: <br>
   Yohan : membuat sistem logout<br>
 
 Update Jobdesk: <br>
-  Zahra : Research tentang socket.io untuk implementasi streaming, Menyemangati Mas Nanta dan Yohan wkwk <br>
+  Zahra : Research tentang socket.io untuk implementasi streaming, Menyemangati Mas Nanta dan Yohan<br>
