@@ -15,3 +15,6 @@ Update Jobdesk: <br>
 Update Jobdesk: <br>
   Zahra : membuat halaman untuk landing ke movie room, dan add logout tombol di homepage.php<br>
   Yohan : membuat sistem logout<br>
+
+Update Jobdesk: <br>
+  Zahra : Research tentang socket.io untuk implementasi streaming, Menyemangati Mas Nanta dan Yohan wkwk <br>
