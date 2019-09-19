@@ -348,7 +348,8 @@ video {
     }
 
     /* Form Register */
-    .register{
+    /* Form Register kalau ada upload photo */
+    /* .register{
         position: relative;
         z-index: 1;
         width: 350px;
@@ -364,8 +365,26 @@ video {
         font-family: 'Roboto Mono', monospace;
         line-height: 32px;
         padding: 40px 45px;
-    }
+    } */
     
+    .register{
+        position: relative;
+        z-index: 1;
+        width: 350px;
+        height: 330px;
+        right: 50%;
+        bottom: 90px;
+        left: 50%;
+        position: absolute; 
+        opacity: 0.6;
+        background-color: black;
+        color: white;
+        box-sizing: border-box;
+        font-family: 'Roboto Mono', monospace;
+        line-height: 32px;
+        padding: 40px 45px;
+    }
+
     .register input{
         width: 100%;
         border: none;
