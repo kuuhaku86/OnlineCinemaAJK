@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2019 at 03:18 PM
+-- Generation Time: Sep 19, 2019 at 02:21 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -36,6 +36,14 @@ CREATE TABLE `room` (
   `roles` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `room`
+--
+
+INSERT INTO `room` (`id`, `id_user`, `user`, `gambar`, `roles`) VALUES
+(6, 8, 'king', '', 'master'),
+(7, 18, 'kingMidas', '', 'user');
+
 -- --------------------------------------------------------
 
 --
@@ -54,8 +62,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `gambar`) VALUES
-(6, 'kuuhaku86', '$2y$10$.nD/I/78thUy7UDRGtWXDur5Gh6Wqqv2UEYA1/yADrHp.CFOUPZUS', '5d7e27b07cf5d.png'),
-(7, 'luffy', '$2y$10$jtk4i83VaU1xwnvkRMvw.e.qDnly1Y1Hb6CJBKyevjqdWDOOLPZB2', 'default.png');
+(18, 'kingMidas', '$2b$10$V9St4zfZO2Tig5Id0.dCReCdZgxYOzZOHBqxN48Sdg.rb1ljg8Ur6', ''),
+(19, 'jackolatern', '$2b$10$akZWGVVWBNUDaPvFC/kWTudQy0BrSQYpBSRdDBIY5QSq3deafDuJC', '');
 
 --
 -- Indexes for dumped tables
@@ -81,13 +89,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

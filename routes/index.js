@@ -33,7 +33,7 @@ router.get('/register',function(req,res,next){
 router.get('/users', function(req, res, next) {
   let login = req.session.login;
   if(login){
-    (req.session.user == "master")?res.render('user-master',{title :'master'}):res.render('user-common',{title :req.session.user});
+    (req.session.user == "master")?res.render('user-master',{name :'master'}):res.render('user-common',{name :req.session.user});
     return;
   }
   res.redirect('/login');
