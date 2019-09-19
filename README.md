@@ -18,3 +18,8 @@ Update Jobdesk: <br>
 
 Update Jobdesk: <br>
   Zahra : Research tentang socket.io untuk implementasi streaming, Menyemangati Mas Nanta dan Yohan<br>
+
+Update Jobdesk: <br>
+  Zahra : Tombol Logout, buat foto profile default, hapus form upload photo<br>
+  Yohan : Implementasi logout<br>
+  Mas Nanta : Implementasi live streaming<br>
