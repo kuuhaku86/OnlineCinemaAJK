@@ -29,7 +29,7 @@ var User = {
         this.find(username,function (result) {
             if(result) {
                 if(bcrypt.compareSync(password, result.password)){
-                    callback(result);
+                    callback(result.username);
                     return;
                 }
             }
