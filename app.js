@@ -4,8 +4,10 @@ const session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var busboy = require('then-busboy');
+var fileUpload = require('express-fileupload');
 var indexRouter = require('./routes/index');
+const db = require('./db');
 
 var app = express();
 
@@ -24,6 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(fileUpload());
 
 app.use('/', indexRouter);
 

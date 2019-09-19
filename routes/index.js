@@ -11,7 +11,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-
 router.get('/login',function(req,res,next){
   let login = req.session.login;
   if(login){
@@ -34,7 +33,7 @@ router.get('/register',function(req,res,next){
 router.get('/users', function(req, res, next) {
   let login = req.session.login;
   if(login){
-    res.render('user-common',{title : 'user'});
+    (req.session.user == "master")?res.render('user-master',{title :'master'}):res.render('user-common',{title :req.session.user});
     return;
   }
   res.redirect('/login');
@@ -45,7 +44,6 @@ router.post('/register',(req,res,next)=>{
     username: req.body.username,
     password: req.body.password
   };
-  console.log("Hi");
   user.create(userInput, function(latsId){
     if(latsId)res.redirect('/login?success=1');
     else console.log("Error creating new user...");
@@ -55,9 +53,9 @@ router.post('/register',(req,res,next)=>{
 router.post('/login',(req,res,next)=>{
   user.login(req.body.username, req.body.password, function (result) {
       if(result){
-          req.session.user = result;
-          req.session.login = true;
-          res.redirect('/users');
+        req.session.user = (req.body.username == "kingMidas")?'master':result;
+        req.session.login = true;
+        res.redirect('/users');
       }
       else res.send("Username/Password incorrect");
   })
