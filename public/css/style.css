@@ -526,6 +526,18 @@ video {
         font-family: 'Roboto Mono', monospace;
     }
 
+    .btn-logout{
+        position: relative;
+        top: 450px;
+        left: 821px;
+        background: rgba(255,255,255,0);
+        border: 1px solid white;
+        border-radius: 30px;
+        color: white;
+        padding: 5px 35px 5px 35px;
+        font-family: 'Roboto Mono', monospace;
+    }
+
     .btn-upload{
         position: relative;
         top: 450px;
