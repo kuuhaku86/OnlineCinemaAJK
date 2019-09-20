@@ -1,6 +1,7 @@
 var express = require('express');
 const user = require('./../core/user');
 var router = express.Router();
+var fs = require('fs');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   let login = req.session.login;
@@ -67,6 +68,18 @@ router.get('/logout', (req,res,next)=>{
           res.redirect('/');
       });
   }
+});
+
+router.get('/livestreaming', (req,res)=>{
+  res.writeHead(200,{'Content-Type': 'video/mp4'});
+  var rs = fs.createReadStream("./public/movie/launch.mp4");
+  rs.pipe(res);
+});
+
+router.get('/livestreaming-common', (req,res)=>{
+  res.writeHead(200,{'Content-Type': 'video/mp4'});
+  var rs = fs.createReadStream("./public/movie/launch.mp4");
+  rs.pipe(res);
 });
 
 module.exports = router;

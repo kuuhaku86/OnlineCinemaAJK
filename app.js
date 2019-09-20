@@ -8,8 +8,10 @@ var busboy = require('then-busboy');
 var fileUpload = require('express-fileupload');
 var indexRouter = require('./routes/index');
 const db = require('./db');
+var io = require('socket.io');
 
 var app = express();
+var http = require('http').Server(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,6 +31,12 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(fileUpload());
 
 app.use('/', indexRouter);
+
+io.on('connection',function(socket) {
+  socket.on('stream',function(image) {
+    socket.broadcast.emit('stream',image);
+  })
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
