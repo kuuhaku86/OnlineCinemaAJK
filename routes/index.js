@@ -71,15 +71,11 @@ router.get('/logout', (req,res,next)=>{
 });
 
 router.get('/livestreaming', (req,res)=>{
-  res.writeHead(200,{'Content-Type': 'video/mp4'});
-  var rs = fs.createReadStream("./public/movie/launch.mp4");
-  rs.pipe(res);
+  res.render('livestreaming');
 });
 
-router.get('/livestreaming-common', (req,res)=>{
-  res.writeHead(200,{'Content-Type': 'video/mp4'});
-  var rs = fs.createReadStream("./public/movie/launch.mp4");
-  rs.pipe(res);
+router.get('/livestreaming-user', (req,res)=>{
+  res.render('livestreaming-user');
 });
 
 module.exports = router;

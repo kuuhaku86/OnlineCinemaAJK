@@ -1,11 +1,9 @@
-<?php
-    include "bootstrap.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
-            <% include layouts/head %>
+        <% include layouts/head %>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
         <title>You're The Master</title>
     </head>
 
@@ -13,7 +11,7 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-            <a class="navbar-brand" href="#">OnlineCinema</a>
+            <a class="navbar-brand" href="/">OnlineCinema</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -21,12 +19,8 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-                            Username
-                            </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Change Movie</a>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="/logout">Logout</a>
                         </li>
                         <!-- Foto Profil -->
                             <!-- <img src="img/5d7e27b07cf5d.png" alt="hi" class="img-thumbnail2"> -->
@@ -38,9 +32,10 @@
         <!-- Jumbotron -->
         <div class="jumbotron4 jumbotron-fluid">
             <!-- Movie -->
-            <video controls="controls">
-                <source src="movie/launch.mp4">
-            </video>
+            <video controls="controls" src="/movie/launch.mp4" id="video" style="width: 680px; height: 320px" autoplay="true"></video>
+            
+            <canvas style="display: none;" id="preview"></canvas>
+
             <!-- Chat -->
             <div class="chatbox">
                 <div class="chatlogs">
@@ -62,7 +57,45 @@
                 </div>
 
             </div>
+            
         </div>
+        <script type="text/javascript">
+            var canvas = document.getElementById("preview");
+            var context = canvas.getContext("2d");
+            
+            canvas.width = 800px;
+            canvas.height = 600px;
+            
+            context.width = canvas.width;
+            context.height = canvas.height;
+
+            var video = getElementById("video");
+            var socket = io();
+            
+            function loadCam(stream){
+                video.src = window.URL.createObjectURL(stream);
+                console.log("Film berhasil diputar.");
+
+            }
+
+            function loadFail(){
+                console.log("Gagal memutar film.");
+            }
+
+            function viewVideo(){
+                context.drawImage(video, 0, 0, context.width, context.height);
+                socket.emit('stream',canvas.toDataURL('image/webp'));
+            }
+            $(function(){
+                navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMedia);
+                if(navigator.getUserMedia){
+                    navigator.getUserMedia({video : true}, loadCam, loadFail);
+                }
+                setInterval(function(){
+                    viewVideo(video,context);
+                },70);
+            });
+        </script>
         <% include layouts/foot %>
     </body>
 </html>
