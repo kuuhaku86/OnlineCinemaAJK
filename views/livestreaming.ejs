@@ -2,8 +2,9 @@
 <html lang="en">
     <head>
         <% include layouts/head %>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- <script src="/socket.io/socket.io.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
         <title>You're The Master</title>
     </head>
 
@@ -32,10 +33,10 @@
         <!-- Jumbotron -->
         <div class="jumbotron4 jumbotron-fluid">
             <!-- Movie -->
-            <video controls="controls" src="/movie/launch.mp4" id="video" style="width: 680px; height: 320px" autoplay="true"></video>
+            <video controls="controls" src="/movie/launch.mp4" id="video" style="width: 700px; height: 350px" autoplay="true"></video>
             
-            <canvas style="display: none;" id="preview"></canvas>
-
+            <canvas style="display:none;" id="preview"></canvas>
+            <div id="logger"></div>
             <!-- Chat -->
             <div class="chatbox">
                 <div class="chatlogs">
@@ -61,25 +62,33 @@
         </div>
         <script type="text/javascript">
             var canvas = document.getElementById("preview");
-            var context = canvas.getContext("2d");
+            var context = canvas.getContext('2d');
             
-            canvas.width = 800px;
-            canvas.height = 600px;
+            canvas.width = 900;
+            canvas.height = 700;
             
             context.width = canvas.width;
             context.height = canvas.height;
 
             var video = getElementById("video");
-            var socket = io();
+            var socket = io.connect('http://localhost:8600');
             
-            function loadCam(stream){
-                video.src = window.URL.createObjectURL(stream);
-                console.log("Film berhasil diputar.");
+            function logger(msg){
+                $('#logger').text(msg);
+            }
 
+            function loadCam(stream){
+                   // console.log("Film berhasil diputar.");
+                try{
+                    video.srcObject = stream;
+                } catch(err){
+                    video.src = window.URL.createObjectURL(stream);    
+                }
+                    logger("Camera connected");
             }
 
             function loadFail(){
-                console.log("Gagal memutar film.");
+                logger("Camera not connected");
             }
 
             function viewVideo(){
@@ -89,11 +98,11 @@
             $(function(){
                 navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMedia);
                 if(navigator.getUserMedia){
-                    navigator.getUserMedia({video : true}, loadCam, loadFail);
+                    navigator.getUserMedia({video : true, audio: true}, loadCam, loadFail);
                 }
                 setInterval(function(){
                     viewVideo(video,context);
-                },70);
+                },5);
             });
         </script>
         <% include layouts/foot %>

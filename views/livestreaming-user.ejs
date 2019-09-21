@@ -2,7 +2,9 @@
 <html lang="en">
     <head>
         <% include layouts/head %>
-        <script src="/socket.io/socket.io.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- <script type="text/javascript" src="/socket.io/socket.io.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
         <title>Stream For All Of You</title>
     </head>
 
@@ -35,7 +37,7 @@
         <div class="jumbotron4 jumbotron-fluid">
             <!-- Movie -->
             <img id="play">
-
+            <div id="logger"></div>
             <!-- Chat -->
             <div class="chatbox">
                 <div class="chatlogs">
@@ -58,11 +60,11 @@
             </div>
 
         </div>
-        <script>
+        <script type="text/javascript">
             var socket = io();
             socket.on('stream', function(image){
-                var img = document.getElementById("play");
-                img.src = image;                
+                $('#play').attr('src', image);
+                $('#logger').text(image);               
             });
         </script>
         <% include layouts/foot %>
