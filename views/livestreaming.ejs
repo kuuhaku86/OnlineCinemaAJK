@@ -35,7 +35,7 @@
             <!-- Movie -->
             <video controls="controls" src="/movie/launch.mp4" id="video" style="width: 700px; height: 350px" autoplay="true"></video>
             
-            <canvas style="display:none;" id="preview"></canvas>
+            <canvas id="preview" style="display: none;"></canvas>
             <div id="logger"></div>
             <!-- Chat -->
             <div class="chatbox">
@@ -70,8 +70,8 @@
             context.width = canvas.width;
             context.height = canvas.height;
 
-            var video = getElementById("video");
-            var socket = io.connect('http://localhost:8600');
+            var video = document.getElementById("video");
+            var socket = io('http://localhost:8600');
             
             function logger(msg){
                 $('#logger').text(msg);
@@ -79,11 +79,8 @@
 
             function loadCam(stream){
                    // console.log("Film berhasil diputar.");
-                try{
-                    video.srcObject = stream;
-                } catch(err){
-                    video.src = window.URL.createObjectURL(stream);    
-                }
+                   //buat webcam
+                //video.src = window.URL.createObjectURL(stream);
                     logger("Camera connected");
             }
 
@@ -102,7 +99,7 @@
                 }
                 setInterval(function(){
                     viewVideo(video,context);
-                },5);
+                },0);
             });
         </script>
         <% include layouts/foot %>

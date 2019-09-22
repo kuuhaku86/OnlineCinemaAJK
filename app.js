@@ -12,6 +12,7 @@ const db = require('./db');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var port = process.env.PORT || 8600;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,6 +33,7 @@ app.use(fileUpload());
 
 app.use('/', indexRouter);
 
+//broadcast video
 io.on('connection',function(socket) {
   socket.on('stream',function(image) {
     socket.broadcast.emit('stream',image);
@@ -54,4 +56,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+http.listen(port, function(){
+  logger("Server is running at port " +port);
+});
 module.exports = app;

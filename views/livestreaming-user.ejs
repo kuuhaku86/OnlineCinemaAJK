@@ -61,10 +61,11 @@
 
         </div>
         <script type="text/javascript">
-            var socket = io();
+            var socket = io('http://localhost:8600');
             socket.on('stream', function(image){
-                $('#play').attr('src', image);
-                $('#logger').text(image);               
+                var img = document.getElementById("play");
+                img.src = image;
+                $("#logger").text(image);
             });
         </script>
         <% include layouts/foot %>
