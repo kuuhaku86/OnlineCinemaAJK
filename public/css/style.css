@@ -198,7 +198,20 @@ video {
 /* Chatbox */
 .chatbox {
     position: relative;
-    margin-top: -485px;
+    margin-top: -380px;
+    margin-left: 955px;
+    width: 280px;
+    min-width: 250px;
+    height: 500px;
+    background:rgba(0,0,0,0.7);
+    color: #F8F7F4;
+    padding: 25px;
+    box-shadow: 6px 6px 6px #000000;
+}
+
+.chatbox-u {
+    position: relative;
+    margin-top: 90px;
     margin-left: 955px;
     width: 280px;
     min-width: 250px;
