@@ -29,26 +29,33 @@
             </div>
         </nav>
 
-        <!-- Jumbotron -->
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4_register">Login</h1>
-                <div class="lead_register">
-                    <p> Belum punya akun? </p>
+        <!-- Container -->
+        <div class="container">
+            <h1 class="display-4_register">Login</h1>
+                <div class="row justify-content-center">
+                    <div class="col-md-6 mx-auto">
+                        <div class="lead_register">
+                            <p> Belum punya akun? </p>
+                        </div>
+                        <div class="col-3 mx-auto">
+                                <p> <a href="/register" class="btn-register">Register</a> </p>
+                        </div>
+                    </div>
                 </div>
-                <p> <a href="/register" class="btn-register">Register</a> </p>
-            </div>
-        </div>
 
         <!-- Form Register -->
-        <div class="login">
-            <form action="/login" method="POST">
-                <b> <h1>Username</h1> </b>
-                <p> <input type="text" title="username" name="username" /> </p>
-                <b> <h1>Password</h1> </b>
-                <p> <input type="Password" title="password" name="password" /> </p>
-                <p> <button type="submit" class="btn-login" name="login">Submit</button> </p>
-            </form>
+        <div class="row justify-content-center">
+            <div class="col-md-6 mx-auto">
+                <div class="login">
+                    <form action="/login" method="POST">
+                        <b> <h1>Username</h1> </b>
+                        <p> <input type="text" title="username" name="username" /> </p>
+                        <b> <h1>Password</h1> </b>
+                        <p> <input type="Password" title="password" name="password" /> </p>
+                        <p> <button type="submit" class="btn-login" name="login">Submit</button> </p>
+                    </form>
+                </div>
+            </div>
         </div>
     <% include layouts/foot %>
     </body>
