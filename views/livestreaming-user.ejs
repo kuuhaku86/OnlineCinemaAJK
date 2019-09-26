@@ -61,7 +61,7 @@
 
         </div>
         <script type="text/javascript">
-            var socket = io('http://localhost:8600');
+            var socket = io('http://10.151.252.172:8600/');
             socket.on('stream', function(image){
                 var img = document.getElementById("play");
                 img.src = image;
