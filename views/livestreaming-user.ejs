@@ -21,7 +21,7 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-                            Username
+                            <%= name %>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/logout">Logout</a>
@@ -61,7 +61,7 @@
 
         </div>
         <script type="text/javascript">
-            var socket = io('http://10.151.252.172:8600/');
+            var socket = io('http://10.151.254.158:8600/');
             socket.on('stream', function(image){
                 var img = document.getElementById("play");
                 img.src = image;

@@ -4,8 +4,7 @@ var router = express.Router();
 var fs = require('fs');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  let login = req.session.login;
-  if(login){
+  if(req.session.login){
     res.redirect('/users');
     return;
   }
@@ -13,8 +12,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login',function(req,res,next){
-  let login = req.session.login;
-  if(login){
+  if(req.session.login){
     res.redirect('/users');
     return;
   }
@@ -23,8 +21,7 @@ router.get('/login',function(req,res,next){
 });
 
 router.get('/register',function(req,res,next){
-  let login = req.session.login;
-  if(login){
+  if(req.session.login){
     res.redirect('/users');
     return;
   }
@@ -32,8 +29,7 @@ router.get('/register',function(req,res,next){
 });
 
 router.get('/users', function(req, res, next) {
-  let login = req.session.login;
-  if(login){
+  if(req.session.login){
     (req.session.user == "master")?res.render('user-master',{name :'master'}):res.render('user-common',{name :req.session.user});
     return;
   }
@@ -59,7 +55,7 @@ router.post('/login',(req,res,next)=>{
         res.redirect('/users');
       }
       else res.send("Username/Password incorrect");
-  })
+  });
 });
 
 router.get('/logout', (req,res,next)=>{
@@ -70,12 +66,20 @@ router.get('/logout', (req,res,next)=>{
   }
 });
 
-router.get('/livestreaming', (req,res)=>{
-  res.render('livestreaming');
+router.get('/livestreaming', (req,res,next)=>{
+  if(req.session.login){
+    res.render('livestreaming',{name :'master'});
+    return;
+  }
+  res.redirect('/login');
 });
 
-router.get('/livestreaming-user', (req,res)=>{
-  res.render('livestreaming-user');
+router.get('/livestreaming-user', (req,res,next)=>{
+  if(req.session.login){
+    res.render('livestreaming-user',{name :req.session.user});
+    return;
+  }
+  res.redirect('/login');
 });
 
 module.exports = router;
