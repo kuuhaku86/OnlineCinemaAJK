@@ -2,9 +2,6 @@
 <html lang="en">
     <head>
         <% include layouts/head %>
-        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-        <!-- <script type="text/javascript" src="/socket.io/socket.io.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
         <title>Stream For All Of You</title>
     </head>
 
@@ -41,22 +38,15 @@
             <!-- Chat -->
             <div class="chatbox-u">
                 <div class="chatlogs">
-
-                    <div class="chat">
+                    <!-- <div class="chat">
                         <div class="user-photo"><img src="img/default.png"></div>
-                        <p class="chat-message">Seru banget nih filmnya</p>
-                    </div>
-                    <div class="chat">
-                        <div class="user-photo"><img src="img/default.png"></div>
-                        <p class="chat-message">Eh Iya, bener banget</p>
-                    </div>
-
+                        <p class="chat-message"><strong></strong> Iya, bener banget</p>
+                    </div> -->
                 </div>
-
-                <div class="chat-form">
-                        <textarea></textarea>
-                        <button>Send</button>
-                </div>
+                <form class="chat-form">
+                    <input type="text" placeholder="Say something nice" />
+                    <button type="submit">Send</button>
+                </form>
             </div>
 
         </div>
@@ -65,7 +55,6 @@
             socket.on('stream', function(image){
                 var img = document.getElementById("play");
                 img.src = image;
-                $("#logger").text(image);
             });
         </script>
         <% include layouts/foot %>

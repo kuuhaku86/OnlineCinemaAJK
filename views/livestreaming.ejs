@@ -2,9 +2,6 @@
 <html lang="en">
     <head>
         <% include layouts/head %>
-        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-        <!-- <script src="/socket.io/socket.io.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
         <title>You're The Master</title>
     </head>
 
@@ -34,7 +31,7 @@
         </nav>
 
         <!-- Jumbotron -->
-        <div class="jumbotron4 jumbotron-fluid">
+        < class="jumbotron4 jumbotron-fluid">
             <!-- Movie -->
             <video controls="controls" src="/movie/launch.mp4" id="video" style="width: 700px; height: 350px" autoplay="true"></video>
             
@@ -42,29 +39,24 @@
             <!-- Chat -->
             <div class="chatbox">
                 <div class="chatlogs">
-
-                    <div class="chat">
+                    <!-- <div class="chat">
                         <div class="user-photo"><img src="img/default.png"></div>
                         <p class="chat-message">Seru banget nih filmnya</p>
-                    </div>
-                    <div class="chat">
-                        <div class="user-photo"><img src="img/default.png"></div>
-                        <p class="chat-message">Eh Iya, bener banget</p>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="chat-form">
-                        <textarea></textarea>
-                        <button>Send</button>
-                </div>
+            </div>
+            <form class="chat-form">
+                <input type="text" placeholder="Say something nice" />
+                <button type="submit">Send</button>
+            </form>
             </div>
         </div>
         <script type="text/javascript">
             var canvas = document.getElementById("preview");
             var context = canvas.getContext('2d');
-            
             canvas.width = 900;
             canvas.height = 700;
-            
+
             context.width = canvas.width;
             context.height = canvas.height;
 
