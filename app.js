@@ -40,7 +40,7 @@ io.on('connection',function(socket) {
   });
   //trying send message from socket
   socket.on('message',function(data){
-    socket.broadcast.emit('message',data);
+    io.sockets.emit('message',data);
   });
 });
 
