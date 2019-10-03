@@ -1,3 +1,6 @@
+.{
+    margin: 0; 
+}
 /* Body */
 body {
     background-image: url('/images/film_0.jpg'); 
@@ -58,11 +61,49 @@ body::after {
     color: #F8F7F4;
 }
 
+@media (min-width: 992px) {
+/* Halaman Login.ejs */
+.display-4_login {
+    margin-top: 200px !important;
+    margin-left: 110px;
+    margin-bottom: -50px;
+    font-weight: 400;
+    font-size: 70px;
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.7);
+}
+
+.lead_login {
+    text-align: left;
+    position: relative;
+    left: -52px !important;
+    top: 50px !important;
+    font-size: 15px;
+    line-height: 10px;
+    font-weight: 500;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.btn-register{
+    z-index: 1;
+    position: relative;
+    left: -310px;
+    top: 50px; 
+}
+
+/* Halaman Register.ejs */
+.register{
+    right: 50%;
+    bottom: 150px;
+    left: 50%;
+}
+
+
 .display-4_register {
     left: 110px;
     top: 60px;
     position: relative;
     margin-top: 150px;
+    margin-bottom: -20px;
     font-weight: 400;
     font-size: 70px;
     text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.7);
@@ -71,16 +112,59 @@ body::after {
 .lead_register {
     text-align: left;
     position: relative;
+    left: -40px !important;
+    margin-top: 25px;
+    margin-bottom: -10px;
+    font-size: 15px;
+    line-height: 10px;
+    font-weight: 500;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4);
+} 
+}
+
+.display-4_login {
+    left: 110px;
+    top: 60px;
+    /* position: relative; */
+    margin-top: 150px;
+    font-weight: 400;
+    font-size: 70px;
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.7);
+}
+
+.lead_login {
+    text-align: left;
+    /* position: relative; */
     left: 240px;
     top: 55px;
     font-size: 15px;
     line-height: 10px;
     font-weight: 500;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4);
-}  */
+}  
 
+.display-4_register {
+    left: 110px;
+    top: 60px;
+    /* position: relative; */
+    margin-top: 150px;
+    font-weight: 400;
+    font-size: 70px;
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.7);
+}
+
+.lead_register {
+    text-align: left;
+    /* position: relative; */
+    left: 240px;
+    top: 55px;
+    font-size: 15px;
+    line-height: 10px;
+    font-weight: 500;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4);
+}
 /* User */
-.jumbotron2 {
+/* .jumbotron2 {
     background-image: url('/images/coba6.jpg');
     background-size: cover;
     height: 650px;
@@ -109,10 +193,10 @@ body::after {
     top: 160px;
     right: 30px;
     color: #F8F7F4;
-}
+} */
 
 /* Room Master */
-.jumbotron3 {
+/* .jumbotron3 {
     background-image: url('/images/coba7.jpg');
     background-size: cover;
     height: 650px;
@@ -142,7 +226,7 @@ body::after {
     font-size: 45px;
     top: 160px;
     color: #F8F7F4;
-}
+} */
 
 .dropdown-menu {
     color: black;
@@ -326,6 +410,7 @@ video {
         text-shadow: 0 0 5px rgba(0,0,0,0.7), 0 0 5px rgba(0,0,0,0.7);
         margin-bottom: 40px;
         color: #F8F7F4;
+        
     }
     
     /* Deskripsi */
@@ -371,6 +456,7 @@ video {
     .login{
         position: relative;
         z-index: 1;
+        top: 40px;
         width: 350px;
         height: 280px;
         max-width: 100%;
@@ -421,6 +507,110 @@ video {
         font-size: 14px;
         margin-bottom: -3px;
     }
+
+    .display-4_login {
+        margin-top: 30px;
+        font-weight: 400;
+        font-size: 70px;
+        text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.7);
+    }
+    
+    .lead_login {
+        text-align: right;
+        margin-top: -15px;
+        margin-bottom: -10px;
+        margin-right: 15px;
+        font-size: 14px;
+        line-height: 10px;
+        font-weight: 500;
+        text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-register{
+        font-weight: 500;
+        font-size: 13px;
+    }
+
+    /* Halaman Register.ejs */
+    .register{
+        position: relative;
+        width: 350px;
+        height: 330px;
+        top: 40px;
+        max-width: 100%;
+        max-height: 80%; 
+        opacity: 0.6;
+        background-color: black;
+        color: white;
+        box-sizing: border-box;
+        font-family: 'Roboto Mono', monospace;
+        line-height: 32px;
+        padding: 40px 45px;
+    }
+
+    .display-4_register {
+        margin-top: 30px;
+        font-weight: 400;
+        font-size: 60px;
+        text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.7);
+    }
+    
+    .lead_register {
+        text-align: right;
+        margin-top: -12px;
+        margin-bottom: -10px;
+        margin-right: 20px;
+        font-size: 14px;
+        line-height: 10px;
+        font-weight: 500;
+        text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4);
+    }
+
+    .register input{
+        width: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        border-bottom: 1px solid white; 
+        color:white;
+    } 
+
+    .register select{
+        width: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        border-bottom: 1px solid white; 
+        height: 25px;
+        margin-bottom: 15px;
+        color:white;
+    } 
+    
+    .register select::before{
+        content: '';
+        background: red;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 100px;
+        pointer-events: none;
+    } 
+    
+    .register h1{
+        font-size: 14px;
+        margin-bottom: -3px;
+    }
+
+    .register h2{
+        font-size: 14px;
+    }
+
+    .btn-login{
+        position: relative;
+        z-index: 500;   
+    }
+
 }
     /* Navbar */
     .nav-link {
@@ -446,13 +636,13 @@ video {
     }
 
     /* Jumbotron */
-    .jumbotron {
+    /* .jumbotron {
         margin-top: -75px;
     }
 
     .jumbotron2 {
         margin-top: -265px;
-    }
+    } */
 
     .jumbotron3 {
         margin-top: -265px;
@@ -487,10 +677,9 @@ video {
         z-index: 1;
         width: 350px;
         height: 330px;
-        right: 50%;
+        /* right: 50%;
         bottom: 90px;
-        left: 50%;
-        position: absolute; 
+        left: 50%; */
         opacity: 0.6;
         background-color: black;
         color: white;
@@ -548,7 +737,7 @@ video {
         width: 350px;
         height: 280px;
         right: 50%;
-        bottom: 110px;
+        bottom: 160px;
         left: 50%;
         opacity: 0.6;
         background-color: black;
@@ -637,15 +826,16 @@ video {
     }
     
     .btn-register{
-        position: relative;
-        left: 180px;
-        top: 55px; 
         background: rgba(0,0,0,0.2);
         border: 1px solid white;
         border-radius: 30px;
         color: white;
         padding: 5px 35px 5px 35px;
         font-family: 'Roboto Mono', monospace;
+    }
+
+    .btn-register:visited {
+        color: white;
     }
 
     .btn-join{
