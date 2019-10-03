@@ -43,20 +43,15 @@
                         <p class="chat-message"><strong></strong> Iya, bener banget</p>
                     </div> -->
                 </div>
-                <form class="chat-form">
+                <div class="chat-form">
                     <input type="text" placeholder="Say something nice" />
-                    <button type="submit">Send</button>
-                </form>
+                    <button id="button">Send</button>
+                </div>
             </div>
 
         </div>
-        <script type="text/javascript">
-            var socket = io('');
-            socket.on('stream', function(image){
-                var img = document.getElementById("play");
-                img.src = image;
-            });
-        </script>
+        <script type="text/javascript" src="/javascripts/livestream-user.js"></script>
         <% include layouts/foot %>
+        <script type="text/javascript" src="/javascripts/livestream.js"></script>
     </body>
 </html>
