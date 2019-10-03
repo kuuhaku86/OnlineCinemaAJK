@@ -74,7 +74,7 @@
             context.height = canvas.height;
 
             var video = document.getElementById("video");
-            var socket = io('http://10.151.252.172:8600/');
+            var socket = io('');
             
             function logger(msg){
                 $('#logger').text(msg);
@@ -99,6 +99,7 @@
                 navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMedia);
                 if(navigator.getUserMedia){
                     navigator.getUserMedia({video : true, audio: true}, loadCam, loadFail);
+                    
                 }
                 setInterval(function(){
                     viewVideo(video,context);
