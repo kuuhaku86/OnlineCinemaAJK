@@ -243,7 +243,7 @@ body::after {
 .jumbotron4 .container {
     /* position: relative;
     z-index: 1; */
-    position: absolute;
+    position: relative;
 }
 
 .jumbotron4::before {
@@ -270,24 +270,22 @@ body::after {
 video {
     position: relative;
     z-index: 1;
-    width: 854px;
-    height: 480px;
+    /* width: 854px; */
+    /* height: 480px; */
     margin-top: 100px;
-    margin-left: 75px;
 }
 
 /* Chatbox */
 .chatbox {
     position: relative;
-    margin-top: -380px;
-    margin-left: 955px;
-    width: 280px;
-    min-width: 250px;
+    width: 300px;
     height: 500px;
     background:rgba(0,0,0,0.7);
     color: #F8F7F4;
     padding: 25px;
     box-shadow: 6px 6px 6px #000000;
+    overflow: visible;
+    margin-top: 10px;
 }
 
 .chatbox-u {
@@ -308,7 +306,7 @@ video {
     padding: 10px 0 10px 0;
     width: 100%;
     height: 360px;
-    overflow-x: hidden;
+    overflow-x: hidden; 
     overflow-y: scroll;
 }
 
@@ -361,32 +359,6 @@ video {
     align-items: flex-end;    
 }
 
-.chat-form textarea {
-    background: transparent;
-    width: 100%;
-    height: 30px;
-    border: none;
-    border-bottom: 1px solid white; 
-    color:white;
-    font-size: 10pt;
-    resize: none;
-}
-
-.chat-form textarea::-webkit-scrollbar {
-    width: 10px;
-}
-
-.chat-form textarea::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);
-    border-radius: 10px;
-}
-
-.chat-form textarea::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background: rgba(255,255,255,.1);
-    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);
-}
-
 .chat-form button {
     background: transparent;
     border: 1px solid white;
@@ -395,6 +367,10 @@ video {
     font-size: 10pt;
     padding: 2px 10px;
     font-family: 'Roboto Mono', monospace;
+}
+
+.chat-video-wrapper {
+    margin-top: 100px;
 }
 
 /* Phone Version */

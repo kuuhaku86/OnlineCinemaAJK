@@ -7,6 +7,7 @@ $('#button').click(function (e) {
     e.preventDefault();
     // Retrieve the message from the user
     var message = $('#chat-box').val();
+    if(message == "")return;
     // Send the message to the server
     socket.emit('message', {
         user: $('.nav-link').html(),

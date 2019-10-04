@@ -38,7 +38,7 @@ io.on('connection',function(socket) {
   socket.on('stream',function(image) {
     socket.broadcast.emit('stream',image);
   });
-  //trying send message from socket
+  //for sending message
   socket.on('message',function(data){
     io.sockets.emit('message',data);
   });

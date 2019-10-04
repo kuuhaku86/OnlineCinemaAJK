@@ -29,24 +29,17 @@
         </nav>
 
         <!-- Jumbotron -->
-        < class="jumbotron4 jumbotron-fluid">
+        <div class="jumbotron4 jumbotron-fluid chat-video-wrapper row">
             <!-- Movie -->
             <video controls="controls" src="/movie/launch.mp4" id="video" style="width: 700px; height: 350px" autoplay="true"></video>
-            
             <canvas id="preview" style="display: none;"></canvas>
             <!-- Chat -->
             <div class="chatbox">
-                <div class="chatlogs">
-                    <!-- <div class="chat">
-                        <div class="user-photo"><img src="img/default.png"></div>
-                        <p class="chat-message">Seru banget nih filmnya</p>
-                    </div> -->
+                <div class="chatlogs"></div>
+                <div class="chat-form">
+                    <input type="text" id="chat-box" placeholder="Say something nice" />
+                    <button id="button">Send</button>
                 </div>
-            </div>
-            <div class="chat-form">
-                <input type="text" id="chat-box" placeholder="Say something nice" />
-                <button id="button">Send</button>
-            </div>
             </div>
         </div>
         <script type="text/javascript">
