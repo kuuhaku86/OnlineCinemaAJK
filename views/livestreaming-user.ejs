@@ -4,7 +4,6 @@
         <% include layouts/head %>
         <title>Stream For All Of You</title>
     </head>
-
     <body>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -18,7 +17,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"><%= name %></a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/logout">Logout</a>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </div>
                         </li>
                         <!-- Foto Profil -->
                             <!-- <img src="img/5d7e27b07cf5d.png" alt="hi" class="img-thumbnail2"> -->
@@ -27,15 +27,14 @@
             </div>
         </nav>
         <!-- Jumbotron -->
-        <div class="jumbotron4 jumbotron-fluid">
+        <div class="Jumbotron4 jumbotron-fluid chat-video-wrapper row">
             <!-- Movie -->
-            <img id="play">
-            <div id="logger"></div>
+            <img id="video" class="col-12 col-md-8">
             <!-- Chat -->
-            <div class="chatbox-u">
+            <div class="chatbox col-12 col-md-3">
                 <div class="chatlogs"></div>
                 <div class="chat-form">
-                    <input type="text" id="chat-box" placeholder="Say something nice" />
+                    <input type="text" id="chat-input" placeholder="Say something nice" autocomplete="off"/>
                     <button id="button">Send</button>
                 </div>
             </div>

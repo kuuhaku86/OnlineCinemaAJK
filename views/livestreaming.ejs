@@ -8,36 +8,36 @@
     <body>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
+            <!-- <div class="container"> -->
             <a class="navbar-brand" href="/">OnlineCinema</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"><%= name %></a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/logout">Logout</a>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </div>
                         </li>
                         <!-- Foto Profil -->
                             <!-- <img src="img/5d7e27b07cf5d.png" alt="hi" class="img-thumbnail2"> -->
                     </ul>
                 </div>
-            </div>
+            <!-- </div> -->
         </nav>
 
         <!-- Jumbotron -->
-        <div class="jumbotron4 jumbotron-fluid chat-video-wrapper row">
+        <div class="Jumbotron4 jumbotron-fluid chat-video-wrapper row">
             <!-- Movie -->
-            <video controls="controls" src="/movie/launch.mp4" id="video" style="width: 700px; height: 350px" autoplay="true"></video>
+            <video controls="controls" class="col-12 col-md-8" src="/movie/launch.mp4" id="video" autoplay="true"></video>
             <canvas id="preview" style="display: none;"></canvas>
             <!-- Chat -->
-            <div class="chatbox">
+            <div class="chatbox col-12 col-md-3">
                 <div class="chatlogs"></div>
                 <div class="chat-form">
-                    <input type="text" id="chat-box" placeholder="Say something nice" />
+                    <input type="text" id="chat-input" placeholder="Say something nice" autocomplete="off"/>
                     <button id="button">Send</button>
                 </div>
             </div>

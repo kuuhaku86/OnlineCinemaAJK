@@ -6,13 +6,13 @@ $('#button').click(function (e) {
     // Avoid submitting it through HTTP
     e.preventDefault();
     // Retrieve the message from the user
-    var message = $('#chat-box').val();
+    var message = $('#chat-input').val();
     if(message == "")return;
     // Send the message to the server
     socket.emit('message', {
         user: $('.nav-link').html(),
         message: message
     });
-    $('#chat-box').val('');
+    $('#chat-input').val('');
     // Clear the input and focus it for a new message
     });
