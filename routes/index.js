@@ -66,9 +66,9 @@ router.get('/logout', (req,res,next)=>{
   }
 });
 
-router.get('/livestreaming', (req,res,next)=>{
+router.get('/livestreaming/:film', (req,res,next)=>{
   if(req.session.login){
-    res.render('livestreaming',{name :'master'});
+    res.render('livestreaming',{name :'master',film:req.params["film"]});
     return;
   }
   res.redirect('/login');

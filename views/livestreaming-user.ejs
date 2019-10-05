@@ -2,12 +2,8 @@
 <html lang="en">
     <head>
         <% include layouts/head %>
-        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-        <!-- <script type="text/javascript" src="/socket.io/socket.io.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
         <title>Stream For All Of You</title>
     </head>
-
     <body>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -16,15 +12,13 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-                            <%= name %>
-                            </a>
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"><%= name %></a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/logout">Logout</a>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </div>
                         </li>
                         <!-- Foto Profil -->
                             <!-- <img src="img/5d7e27b07cf5d.png" alt="hi" class="img-thumbnail2"> -->
@@ -32,42 +26,22 @@
                 </div>
             </div>
         </nav>
-
         <!-- Jumbotron -->
-        <div class="jumbotron4 jumbotron-fluid">
+        <div class="Jumbotron4 jumbotron-fluid chat-video-wrapper row">
             <!-- Movie -->
-            <img id="play">
-            <div id="logger"></div>
+            <img id="video" class="col-12 col-md-8">
             <!-- Chat -->
-            <div class="chatbox-u">
-                <div class="chatlogs">
-
-                    <div class="chat">
-                        <div class="user-photo"><img src="img/default.png"></div>
-                        <p class="chat-message">Seru banget nih filmnya</p>
-                    </div>
-                    <div class="chat">
-                        <div class="user-photo"><img src="img/default.png"></div>
-                        <p class="chat-message">Eh Iya, bener banget</p>
-                    </div>
-
-                </div>
-
+            <div class="chatbox col-12 col-md-3">
+                <div class="chatlogs"></div>
                 <div class="chat-form">
-                        <textarea></textarea>
-                        <button>Send</button>
+                    <input type="text" id="chat-input" placeholder="Say something nice" autocomplete="off"/>
+                    <button id="button">Send</button>
                 </div>
             </div>
 
         </div>
-        <script type="text/javascript">
-            var socket = io('');
-            socket.on('stream', function(image){
-                var img = document.getElementById("play");
-                img.src = image;
-                $("#logger").text(image);
-            });
-        </script>
+        <script type="text/javascript" src="/javascripts/livestream-user.js"></script>
         <% include layouts/foot %>
+        <script type="text/javascript" src="/javascripts/livestream.js"></script>
     </body>
 </html>

@@ -32,7 +32,7 @@ body::after {
 /* Navbar */
 .navbar {
     position: relative;
-    z-index: 1;
+    z-index: 99999;
 }
 
 .navbar-brand {
@@ -278,7 +278,7 @@ body::after {
 .jumbotron4 .container {
     /* position: relative;
     z-index: 1; */
-    position: absolute;
+    position: relative;
 }
 
 .jumbotron4::before {
@@ -302,40 +302,26 @@ body::after {
 }
 
 /* Movie */
-video {
+#video {
     position: relative;
-    z-index: 1;
-    width: 854px;
-    height: 480px;
-    margin-top: 100px;
-    margin-left: 75px;
+    z-index: 999;
+    max-width: 1024px; 
+    max-height: 512px;
+    margin-left: 20px;
 }
 
 /* Chatbox */
 .chatbox {
     position: relative;
-    margin-top: -380px;
-    margin-left: 955px;
-    width: 280px;
-    min-width: 250px;
-    height: 500px;
+    max-width: 310px;
+    max-height: 576px;
     background:rgba(0,0,0,0.7);
     color: #F8F7F4;
     padding: 25px;
     box-shadow: 6px 6px 6px #000000;
-}
-
-.chatbox-u {
-    position: relative;
-    margin-top: 90px;
-    margin-left: 955px;
-    width: 280px;
-    min-width: 250px;
-    height: 500px;
-    background:rgba(0,0,0,0.7);
-    color: #F8F7F4;
-    padding: 25px;
-    box-shadow: 6px 6px 6px #000000;
+    overflow: visible;
+    margin-top: 10px;
+    z-index: 999;
 }
 
 .chatlogs{
@@ -343,7 +329,7 @@ video {
     padding: 10px 0 10px 0;
     width: 100%;
     height: 360px;
-    overflow-x: hidden;
+    overflow-x: hidden; 
     overflow-y: scroll;
 }
 
@@ -362,31 +348,6 @@ video {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
 
-.chat {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: flex-start;
-}
-
-.chat .user-photo {
-    width: 20px;
-    height: 20px;
-    /* background: #F8F7F4; */
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.chat .user-photo img {
-    width: 100%;
-}
-
-.chat .chat-message {
-    width: 85%;
-    padding: 0 15px;
-    margin: 0 0 10px 8px;
-    font-size: 10pt;
-}
-
 .chat-form {
     position: relative;
     z-index: 1;
@@ -394,32 +355,6 @@ video {
     margin-bottom: 20px;
     display: flex;
     align-items: flex-end;    
-}
-
-.chat-form textarea {
-    background: transparent;
-    width: 100%;
-    height: 30px;
-    border: none;
-    border-bottom: 1px solid white; 
-    color:white;
-    font-size: 10pt;
-    resize: none;
-}
-
-.chat-form textarea::-webkit-scrollbar {
-    width: 10px;
-}
-
-.chat-form textarea::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);
-    border-radius: 10px;
-}
-
-.chat-form textarea::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background: rgba(255,255,255,.1);
-    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);
 }
 
 .chat-form button {
@@ -430,7 +365,17 @@ video {
     font-size: 10pt;
     padding: 2px 10px;
     font-family: 'Roboto Mono', monospace;
+    margin-bottom: -40px;
 }
+
+#chat-input{
+    color: white;
+    background:rgba(0,0,0,0);
+    border: none;
+    border-bottom: 1px solid white;
+    margin-bottom: -40px;
+}
+
 
 /* Phone Version */
 @media (max-width: 576px) {
@@ -679,13 +624,13 @@ video {
         margin-top: -265px;
     } */
 
-    .jumbotron3 {
+    /* .jumbotron3 {
         margin-top: -265px;
     }
 
     .jumbotron4 {
         margin-top: -85px;
-    }
+    } */
 
     /* Form Register */
     /* Form Register kalau ada upload photo */
@@ -897,38 +842,41 @@ video {
         font-family: 'Roboto Mono', monospace;
     }
 
-    .btn-upload{
+    .btn-upload,.btn-update{
+        margin-top: 20px;
+        /* width: 540px;
+        height: 35px;; */
         position: relative;
-        top: 450px;
-        left: 795px;
-        background: rgba(255,255,255,0);
-        border: 1px solid white;
-        border-radius: 30px;
-        color: white;
-        padding: 5px 35px 5px 35px;
         font-family: 'Roboto Mono', monospace;
-    }
-
-    .btn-update{
-        position: relative;
-        top: 450px;
-        left: 822px;
-        background: rgba(255,255,255,0);
-        border: 1px solid white;
-        border-radius: 30px;
+        /* padding: 5px 35px 5px 35px; */
         color: white;
-        padding: 5px 35px 5px 35px;
-        font-family: 'Roboto Mono', monospace;
+        border: 1px solid white;
+        border-radius: 2px;
+        background: rgba(0,0,0,0.7);
+        z-index : 999;
+        /* left: 20%; */
     }
 
     .img-thumbnail {
         position: relative;
         z-index: 1;
         border-radius: 100%;
-        top: 210px;
-        left: 800px;
         width: 160px;
         height: 160px;
+    }
+
+    .thumbnail-name{
+        margin-top: 100px;
+    }
+
+    @media (max-width:992px){
+        .thumbnail-name{
+            margin-top: 350px;
+            left: 35%;
+        }
+        .thumbnail-name .hi p{
+            right: 33%;
+        }
     }
 
     .img-thumbnail2 {
@@ -945,8 +893,17 @@ video {
         position: relative;
         text-align: center;
         z-index: 1;
-        top: 230px;
-        left: 800px;
+        right: 17%;
+        margin-top: 20px;
+        font-weight: 500;
         color: white;
         font-family: 'Noto Sans', sans-serif;
+    }
+
+    /* Halaman users-master.ejs */
+    .dropdown-film{
+        /* height: 50px;
+        width: 150px; */
+        position: relative;
+        z-index: 9999;
     }

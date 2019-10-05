@@ -2,85 +2,61 @@
 <html lang="en">
     <head>
         <% include layouts/head %>
-        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-        <!-- <script src="/socket.io/socket.io.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
         <title>You're The Master</title>
     </head>
 
     <body>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
+            <!-- <div class="container"> -->
             <a class="navbar-brand" href="/">OnlineCinema</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-                                <%= name %>
-                            </a>
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"><%= name %></a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/logout">Logout</a>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </div>
                         </li>
                         <!-- Foto Profil -->
                             <!-- <img src="img/5d7e27b07cf5d.png" alt="hi" class="img-thumbnail2"> -->
                     </ul>
                 </div>
-            </div>
+            <!-- </div> -->
         </nav>
 
         <!-- Jumbotron -->
-        <div class="jumbotron4 jumbotron-fluid">
+        <div class="Jumbotron4 jumbotron-fluid chat-video-wrapper row">
             <!-- Movie -->
-            <video controls="controls" src="/movie/launch.mp4" id="video" style="width: 700px; height: 350px" autoplay="true"></video>
-            
+            <video controls="controls" class="col-12 col-md-8" src="/movie/<%= film %>.mp4" id="video" autoplay="true"></video>
             <canvas id="preview" style="display: none;"></canvas>
             <!-- Chat -->
-            <div class="chatbox">
-                <div class="chatlogs">
-
-                    <div class="chat">
-                        <div class="user-photo"><img src="img/default.png"></div>
-                        <p class="chat-message">Seru banget nih filmnya</p>
-                    </div>
-                    <div class="chat">
-                        <div class="user-photo"><img src="img/default.png"></div>
-                        <p class="chat-message">Eh Iya, bener banget</p>
-                    </div>
-                </div>
+            <div class="chatbox col-12 col-md-3">
+                <div class="chatlogs"></div>
                 <div class="chat-form">
-                        <textarea></textarea>
-                        <button>Send</button>
+                    <input type="text" id="chat-input" placeholder="Say something nice" autocomplete="off"/>
+                    <button id="button">Send</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="dropdown show dropdown-film col-12 col-md-8">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Change Film</a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="/livestreaming/joker">Joker</a>
+                    <a class="dropdown-item" href="/livestreaming/schematics">Schematics</a>
+                    <a class="dropdown-item" href="/livestreaming/avenger-endgame">Avenger Endgame</a>
                 </div>
             </div>
         </div>
         <script type="text/javascript">
-            var canvas = document.getElementById("preview");
-            var context = canvas.getContext('2d');
-            
-            canvas.width = 900;
-            canvas.height = 700;
-            
-            context.width = canvas.width;
-            context.height = canvas.height;
 
-            var video = document.getElementById("video");
-            var socket = io('');
-
-            function viewVideo(){
-                context.drawImage(video, 0, 0, context.width, context.height);
-                socket.emit('stream',canvas.toDataURL('image/webp'));
-            }
-            $(function(){
-                setInterval(function(){
-                    viewVideo(video,context);
-                },0);
-            });
         </script>
         <% include layouts/foot %>
+        <script type="text/javascript" src="/javascripts/livestream-master.js"></script>
+        <script type="text/javascript" src="/javascripts/livestream.js"></script>
     </body>
 </html>

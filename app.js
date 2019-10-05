@@ -38,6 +38,10 @@ io.on('connection',function(socket) {
   socket.on('stream',function(image) {
     socket.broadcast.emit('stream',image);
   });
+  //for sending message
+  socket.on('message',function(data){
+    io.sockets.emit('message',data);
+  });
 });
 
 // catch 404 and forward to error handler

@@ -58,7 +58,7 @@
         <div class="register">
             <form action="/register" method="POST">
                 <b> <h1>Username</h1> </b>
-                <p> <input type="text" title="username" name="username" /> </p>
+                <p> <input type="text" title="username" name="username" autocomplete="off"/> </p>
                 <b> <h1>Password</h1> </b>
                 <p> <input type="Password" id="password" title="password" name="password" onkeyup="check();"/> </p>
                 <b> <h1>Confirm Password</h1> </b>
@@ -71,7 +71,7 @@
             </form>
         </div>
         <% include layouts/foot %>
-        <script type="text/javascript" src="/javascripts/script.js">
+        <script type="text/javascript" src="/javascripts/register-script.js"></script>
         </script>
     </body>
 </html>
