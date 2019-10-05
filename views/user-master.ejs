@@ -13,14 +13,20 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
             </div>
         </nav>
 
         <!-- Foto Profil -->
-        <div class="container">
+        <div class="container jumbotron3 jumbotron-fluid">
             <div class="row">
-                <div class="col-2">
+                <div class="col-12 col-md-8">
+                        <h1 class="display-4">WELCOME ROOM MASTER</h1>
+                        <!-- <p> <a href="/livestreaming" class="btn-upload">Play Movie</a> </p> -->
+                        <button class="btn-upload"><a href="/livestreaming">Play Movie</a></button>
+                        <button class="btn-update"><a href="/logout">Logout</a></button>
+                        <!-- <p> <a href="/logout" class="btn-update">Logout</a> </p> -->
+                </div>
+                <div class="col-12 col-md-3 thumbnail-name">
                     <img src="/images/profile/bear.jpg" alt="Gak bisa oy" class="img-thumbnail">
                     <!-- <img src="img/<?=$res['gambar']?>" alt="img/default.png" class="img-thumbnail"> -->
                     <div class="hi">
@@ -29,15 +35,7 @@
                 </div>
             </div>
         </div>
-
         <!-- Jumbotron -->
-        <div class="jumbotron3 jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">WELCOME ROOM MASTER</h1>
-                <p> <a href="/livestreaming" class="btn-upload">Play Movie</a> </p>
-                <p> <a href="/logout" class="btn-update">Logout</a> </p>
-            </div>
-        </div>
         <% include layouts/foot %>
     </body>
 </html>

@@ -589,13 +589,13 @@ body::after {
         margin-top: -265px;
     } */
 
-    .jumbotron3 {
+    /* .jumbotron3 {
         margin-top: -265px;
     }
 
     .jumbotron4 {
         margin-top: -85px;
-    }
+    } */
 
     /* Form Register */
     /* Form Register kalau ada upload photo */
@@ -807,38 +807,38 @@ body::after {
         font-family: 'Roboto Mono', monospace;
     }
 
-    .btn-upload{
+    .btn-upload,.btn-update{
         position: relative;
-        top: 450px;
-        left: 795px;
-        background: rgba(255,255,255,0);
+        font-family: 'Roboto Mono', monospace;
+        padding: 5px 35px 5px 35px;
+        color: white;
         border: 1px solid white;
         border-radius: 30px;
-        color: white;
-        padding: 5px 35px 5px 35px;
-        font-family: 'Roboto Mono', monospace;
-    }
-
-    .btn-update{
-        position: relative;
-        top: 450px;
-        left: 822px;
-        background: rgba(255,255,255,0);
-        border: 1px solid white;
-        border-radius: 30px;
-        color: white;
-        padding: 5px 35px 5px 35px;
-        font-family: 'Roboto Mono', monospace;
+        background: rgba(0,0,0,0.7);
+        z-index : 999;
+        left: 20%;
     }
 
     .img-thumbnail {
         position: relative;
         z-index: 1;
         border-radius: 100%;
-        top: 210px;
-        left: 800px;
         width: 160px;
         height: 160px;
+    }
+
+    .thumbnail-name{
+        margin-top: 100px;
+    }
+
+    @media (max-width:992px){
+        .thumbnail-name{
+            margin-top: 350px;
+            left: 35%;
+        }
+        .thumbnail-name .hi p{
+            right: 33%;
+        }
     }
 
     .img-thumbnail2 {
@@ -855,8 +855,9 @@ body::after {
         position: relative;
         text-align: center;
         z-index: 1;
-        top: 230px;
-        left: 800px;
+        right: 17%;
+        margin-top: 20px;
+        font-weight: 500;
         color: white;
         font-family: 'Noto Sans', sans-serif;
     }
