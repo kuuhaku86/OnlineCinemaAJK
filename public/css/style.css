@@ -808,15 +808,18 @@ body::after {
     }
 
     .btn-upload,.btn-update{
+        margin-top: 20px;
+        /* width: 540px;
+        height: 35px;; */
         position: relative;
         font-family: 'Roboto Mono', monospace;
-        padding: 5px 35px 5px 35px;
+        /* padding: 5px 35px 5px 35px; */
         color: white;
         border: 1px solid white;
-        border-radius: 30px;
+        border-radius: 2px;
         background: rgba(0,0,0,0.7);
         z-index : 999;
-        left: 20%;
+        /* left: 20%; */
     }
 
     .img-thumbnail {
@@ -860,4 +863,12 @@ body::after {
         font-weight: 500;
         color: white;
         font-family: 'Noto Sans', sans-serif;
+    }
+
+    /* Halaman users-master.ejs */
+    .dropdown-film{
+        /* height: 50px;
+        width: 150px; */
+        position: relative;
+        z-index: 9999;
     }
