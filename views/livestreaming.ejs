@@ -28,30 +28,31 @@
             <!-- </div> -->
         </nav>
 
-        <!-- Jumbotron -->
-        <div class="Jumbotron4 jumbotron-fluid chat-video-wrapper row">
             <!-- Movie -->
             <video controls="controls" class="col-12 col-md-8" src="/movie/<%= film %>.mp4" id="video" autoplay="true"></video>
             <canvas id="preview" style="display: none;"></canvas>
             <!-- Chat -->
-            <div class="chatbox col-12 col-md-3">
+            <!-- <div class="chatbox col-12 col-md-3"> -->
+            <div class="d-flex flex-row-reverse">
+            <div class="chatbox">    
                 <div class="chatlogs"></div>
                 <div class="chat-form">
                     <input type="text" id="chat-input" placeholder="Say something nice" autocomplete="off"/>
                     <button id="button">Send</button>
                 </div>
             </div>
-        </div>
-        <div class="row">
+            </div>
+
+        <!-- <div class="row"> -->
             <div class="dropdown show dropdown-film col-12 col-md-8">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Change Film</a>
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Change Film</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="/livestreaming/joker">Joker</a>
                     <a class="dropdown-item" href="/livestreaming/schematics">Schematics</a>
                     <a class="dropdown-item" href="/livestreaming/avenger-endgame">Avenger Endgame</a>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
         <script type="text/javascript">
 
         </script>
