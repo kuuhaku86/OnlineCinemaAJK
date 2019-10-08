@@ -6,7 +6,7 @@ $('#button').click(function (e) {
     // Avoid submitting it through HTTP
     e.preventDefault();
     // Retrieve the message from the user
-    var message = $('#chat-input').val();
+    var message = filterXSS($('#chat-input').val());
     if(message == "")return;
     // Send the message to the server
     socket.emit('message', {
