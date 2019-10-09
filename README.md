@@ -27,4 +27,8 @@ Update Jobdesk: <br>
 Update Jobdesk: <br>
   Zahra : perbaiki tampilan (buat responsive sekalian), perbaiki tampilan film buat user, membuat area di halaman livestreaming master untuk melihat user yang on<br>
   Yohan : Research dan implementasi fitur chat, implementasi upload film<br>
-  Mas Nanta : Memperbaiki bug streaming dimana tidak bisa mendengar suara, researh dan implementasi tentang cara ganti room master<br>
+  Mas Nanta : Memperbaiki bug streaming dimana tidak bisa mendengar suara, researh dan implementasi tentang cara ganti room master<br><br>
+
+Update Jobdesk: <br>
+  Yohan : research dan implementasi voice chat dan rooming
+  Zahra : implementasi fullscreen di halaman user
