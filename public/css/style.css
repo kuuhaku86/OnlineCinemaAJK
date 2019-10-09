@@ -223,15 +223,17 @@ body::after {
 
 /* Halaman Livestreaming.ejs */
 
-#dropdownMenuLink {
-    
-}
-
 #dropdownMenuLink1 {
     background-color: #000000;
     position: relative;
     width: 101.75%;
     left: 19px;
+}
+
+.d-flex {
+    position: relative;
+    margin-top: -410px;
+    top: -70px;
 }
 
 }
