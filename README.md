@@ -30,5 +30,5 @@ Update Jobdesk: <br>
   Mas Nanta : Memperbaiki bug streaming dimana tidak bisa mendengar suara, researh dan implementasi tentang cara ganti room master<br><br>
 
 Update Jobdesk: <br>
-  Yohan : research dan implementasi voice chat dan rooming
+  Yohan : research dan implementasi voice chat dan rooming<br>
   Zahra : implementasi fullscreen di halaman user
