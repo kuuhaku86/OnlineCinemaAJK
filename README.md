@@ -31,4 +31,4 @@ Update Jobdesk: <br>
 
 Update Jobdesk: <br>
   Yohan : research dan implementasi voice chat dan rooming<br>
-  Zahra : implementasi fullscreen di halaman user
+  Zahra : implementasi fullscreen di halaman user dan chat yang auto scroll<br><br>
