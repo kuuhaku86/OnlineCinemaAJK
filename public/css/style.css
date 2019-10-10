@@ -465,6 +465,7 @@ body::after {
 }
 
 #chat-input{
+    width: 200px;
     color: white;
     background:rgba(0,0,0,0);
     border: none;
@@ -1026,6 +1027,23 @@ body::after {
         font-family: 'Noto Sans', sans-serif;
     }
 
+    #voice-chat{
+        height: 30px;
+        width: 30px;
+        position: relative;
+        margin-bottom: -40px;
+    }
+
+    #voice-chat:hover{
+        background-color: white;
+        opacity: 50%;
+        cursor: pointer;
+    }
+
+    #voice-chat:active{
+        background: #000000;
+        opacity: 50%;
+    }
     /* Halaman users-master.ejs */
     .dropdown-film{
         /* height: 50px;

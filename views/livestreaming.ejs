@@ -8,7 +8,6 @@
     <body>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light">
-            <!-- <div class="container"> -->
             <a class="navbar-brand" href="/">OnlineCinema</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,18 +20,14 @@
                                 <a class="dropdown-item" href="/logout">Logout</a>
                             </div>
                         </li>
-                        <!-- Foto Profil -->
-                            <!-- <img src="img/5d7e27b07cf5d.png" alt="hi" class="img-thumbnail2"> -->
                     </ul>
                 </div>
-            <!-- </div> -->
         </nav>
 
             <!-- Movie -->
             <video controls="controls" class="col-12 col-md-8" src="/movie/<%= film %>.mp4" id="video" autoplay="true"></video>
             <canvas id="preview" style="display: none;"></canvas>
             <!-- Chat -->
-            <!-- <div class="chatbox col-12 col-md-3"> -->
             <div class="d-flex flex-row-reverse">
             <div class="chatbox">    
                 <div class="chatlogs"></div>
