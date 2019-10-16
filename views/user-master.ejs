@@ -16,11 +16,23 @@
             </div>
         </nav>
 
-        <!-- Foto Profil -->
-        <!-- <div class="container jumbotron3 jumbotron-fluid"> -->
-            <div class="row">
+        <!-- Jumbotron -->
+        <div class="jumbotron3 jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">WELCOME ROOM MASTER</h1>
+                        <!-- <p> <a href="/livestreaming-user" class="btn-join">Join</a> </p> -->
+                <p> <a href="/logout" class="btn-logout2">Logout</a> </p>
+            </div>
+            <div class="col-12 col-md-3 thumbnail-name">
+                <img src="/images/profile/bear.jpg" alt="Gak bisa oy" class="img-thumbnail3">
+                <!-- <img src="img/<?=$res['gambar']?>" alt="img/default.png" class="img-thumbnail"> -->
+                <div class="hi2">
+                    <p> Hi <%= name %> </p>
+                </div>
+            </div>
+            <!-- Foto Profil -->
+            <div class="row"> 
                 <div class="col-12 col-md-8">
-                        <h1 class="display-4">WELCOME ROOM MASTER</h1>
                         <div class="dropdown show dropdown-film">
                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select A Film</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -29,25 +41,10 @@
                                 <a class="dropdown-item" href="/livestreaming/avenger-endgame">Avenger Endgame</a>
                             </div>
                         </div>
-                        <!-- <a class="btn-secondary btn-update btn show" href="/logout" role="button">Logout</a> -->
-                </div>
-                <div class="col-12 col-md-3 thumbnail-name">
-                    <img src="/images/profile/bear.jpg" alt="Gak bisa oy" class="img-thumbnail3">
-                    <!-- <img src="img/<?=$res['gambar']?>" alt="img/default.png" class="img-thumbnail"> -->
-                    <div class="hi2">
-                        <p> Hi <%= name %> </p>
-                    </div>
                 </div>
             </div>
-        <!-- </div> -->
-        <!-- Jumbotron -->
-        <div class="jumbotron3 jumbotron-fluid">
-                <div class="container">
-                    <h1 class="display-4">WELCOME ROOM MASTER</h1>
-                    <!-- <p> <a href="/livestreaming-user" class="btn-join">Join</a> </p> -->
-                    <p> <a href="/logout" class="btn-logout">Logout</a> </p>
-                </div>
-            </div>
+        </div>
+
         <% include layouts/foot %>
     </body>
 </html>

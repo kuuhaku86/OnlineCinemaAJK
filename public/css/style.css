@@ -121,6 +121,22 @@ body::after {
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4);
 }
 
+/* User and Room Master */
+.btn-join{
+    top: 450px;
+    left: 830px;
+}
+
+.btn-logout{
+    top: 450px;
+    left: 821px;
+}
+
+.btn-logout2{
+    top: 470px;
+    left: 821px;
+}
+
 /* User */
 .jumbotron2 {
     background-image: url('/images/coba6.jpg');
@@ -162,8 +178,9 @@ body::after {
 }
 
 .img-thumbnail3 {
-    top: 110px;
-    left: 7%;
+    top: 80px;
+    left: 302%;
+    /* margin-top: -100px; */
 }
 
 .hi p {
@@ -174,7 +191,8 @@ body::after {
 
 .hi2 p {
     z-index: 999 !important;
-    top: 110px;
+    top: 80px;
+    left: 281%;
 }
 
 /* Room Master */
@@ -183,7 +201,7 @@ body::after {
     background-size: cover;
     height: 650px;
     position: relative;
-    margin-top: -535px;
+    margin-top: -215px;
     position: relative;
     z-index: 2;
 }
@@ -215,7 +233,7 @@ body::after {
 
 #dropdownMenuLink {
     width: 20%;
-    top: 170px;
+    top: 70px;
     left: 105.5%;
     border-radius: 40px;
     border-color: white;
@@ -235,6 +253,13 @@ body::after {
     margin-top: -410px;
     top: -70px;
 }
+
+/* .button {
+    position: relative;
+    z-index: 3;
+    left: 1100px;
+    margin-top: -100px;
+} */
 
 }
 
@@ -472,6 +497,38 @@ body::after {
     margin-bottom: -40px;
 }
 
+/* Modal User */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background-color: #f4f4f4;
+    margin: 30% auto;
+    padding: 20px;
+    width: 70%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),  0 7px 20px 0 rgba(0,0,0,0.17);
+}
+
+.closeBtn {
+    color: #ccc;
+    float: right !important;
+    font-size: 30px;
+}
+
+.closeBtn:hover, .closeBtn:focus{
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 /* Phone Version */
 @media (max-width: 576px) {
@@ -687,6 +744,57 @@ body::after {
         z-index: 500;   
     }
 
+    /* User and Room Master */
+    .img-thumbnail {
+        width: 0 !important;
+        height: 0 !important;
+        background-color: rgba(0,0,0,0) !important;
+        border-color: rgba(0,0,0,0) !important;
+    }
+
+    .img-thumbnail3 {
+        width: 0 !important;
+        height: 0 !important;
+        background-color: rgba(0,0,0,0) !important;
+        border-color: rgba(0,0,0,0) !important;
+    }
+
+    .thumbnail-name{
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    .hi p{
+        color: rgba(0,0,0,0) !important;
+        font-size: 0 !important;
+    }
+
+    .hi2 p {
+        color: rgba(0,0,0,0) !important;
+        font-size: 0 !important;
+    }
+
+    .btn-join{
+        left: 33%;
+        z-index: 999;
+    }
+    
+    .btn-logout{
+        left: 29.5%;
+        z-index: 999;
+    }
+
+    .btn-logout2{
+        left: 29%;
+        top: 120px;
+        z-index: 999;
+    }
+
+    .display-4 {
+        margin-top: 50px;
+        margin-bottom: 100px;
+    }
+
     /* User */
     .img-thumbnail {
         top: 100%;
@@ -699,6 +807,14 @@ body::after {
     /* Room Master */
     .hi2 p {
         top: 100%;
+    }
+
+    #dropdownMenuLink {
+        width: 50%;
+        top: -310px;
+        left: 25%;
+        border-radius: 40px;
+        border-color: white;
     }
 
     /* Halaman Livestreaming.ejs */
@@ -919,8 +1035,6 @@ body::after {
 
     .btn-join{
         position: relative;
-        top: 450px;
-        left: 830px;
         background: rgba(255,255,255,0);
         border: 1px solid white;
         border-radius: 30px;
@@ -935,8 +1049,16 @@ body::after {
 
     .btn-logout{
         position: relative;
-        top: 450px;
-        left: 821px;
+        background: rgba(255,255,255,0);
+        border: 1px solid white;
+        border-radius: 30px;
+        color: white;
+        padding: 5px 35px 5px 35px;
+        font-family: 'Roboto Mono', monospace;
+    }
+
+    .btn-logout2{
+        position: relative;
         background: rgba(255,255,255,0);
         border: 1px solid white;
         border-radius: 30px;
@@ -946,6 +1068,10 @@ body::after {
     }
 
     .btn-logout:visited {
+        color: white;
+    }
+
+    .btn-logout2:visited {
         color: white;
     }
 
