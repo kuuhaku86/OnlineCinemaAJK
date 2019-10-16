@@ -31,4 +31,4 @@ Update Jobdesk: <br>
 
 Update Jobdesk: <br>
   Yohan : fix bug suara film dan implementasi untuk mengetahui siapa aja yang online<br>
-  Zahra : implementasi fullscreen di halaman user, ui untuk melihat user yang online dan chat yang auto scroll<br><br>
+  Zahra : implementasi fullscreen di halaman user dan chat yang auto scroll<br><br>
