@@ -454,6 +454,10 @@ body::after {
     overflow-y: auto;
 }
 
+.chat-message {
+    margin-bottom: 4px;
+}
+
 .chatlogs::-webkit-scrollbar {
     width: 10px;
 }

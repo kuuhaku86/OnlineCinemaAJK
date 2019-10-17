@@ -40,8 +40,7 @@ $('#button').click(function (e) {
     }
 
     function getMessages() {
-        // shouldScroll = messages.scrollTop + messages.clientHeight == messages.scrollHeight;
-        var scrollAmount = ($(document).innerHeight() - $(window).height()) * percentageToScroll / 100;
+        shouldScroll = messages.scrollTop + messages.clientHeight == messages.scrollHeight;
         appendMessage();
 
         if (!shouldScroll) {
@@ -54,7 +53,5 @@ $('#button').click(function (e) {
     }
 
     scrollToBottom();
-
-    // setInterval(getMessages, 100);
 
     });
