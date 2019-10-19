@@ -30,5 +30,5 @@ Update Jobdesk: <br>
   Mas Nanta : Researh dan implementasi tentang cara ganti room master<br><br>
 
 Update Jobdesk: <br>
-  Yohan : fix bug suara film dan implementasi untuk mengetahui siapa aja yang online<br>
+  Yohan : fix bug suara film dan implementasi untuk mengetahui siapa aja yang online + multi-room<br>
   Zahra : implementasi fullscreen di halaman user dan chat yang auto scroll<br><br>
