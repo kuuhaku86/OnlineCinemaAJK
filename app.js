@@ -8,6 +8,7 @@ var busboy = require('then-busboy');
 var fileUpload = require('express-fileupload');
 var indexRouter = require('./routes/index');
 const db = require('./db');
+var Room = require('./room');
 
 var app = express();
 var http = require('http').Server(app);
@@ -32,6 +33,11 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(fileUpload());
 
 app.use('/', indexRouter);
+
+var people = {};
+var rooms = {};
+var clients = [];
+var allRooms = [];
 
 //broadcast video
 io.on('connection',function(socket) {
