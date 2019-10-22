@@ -1,6 +1,30 @@
 socket.on('message', function (data) {
     $('.chatlogs').append('<div class="chat"><p class="chat-message"><strong>' + data.user + '</strong>: ' + data.message + '</p></div>');
-    });
+    
+    var message = document.getElementById('messages');
+
+    function appendMessage() {
+        var message = document.getElementById('chat-input');
+        var newMessage = message.cloneNode(true);
+        message.appendChild(newMessage);
+    }
+
+    function getMessages() {
+        shouldScroll = messages.scrollTop + messages.clientHeight == messages.scrollHeight;
+        appendMessage();
+
+        if (!shouldScroll) {
+            scrollToBottom();
+        }
+    }
+
+    function scrollToBottom() {
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    scrollToBottom();
+
+});
     // When the form is submitted
 
     // Get the input field
@@ -29,29 +53,6 @@ $('#button').click(function (e) {
     });
     $('#chat-input').val('');
     // Clear the input and focus it for a new message
-
-    var message = document.getElementById('messages');
-
     });
-    function appendMessage() {
-        var message = document.getElementById('chat-input');
-        var newMessage = message.cloneNode(true);
-        message.appendChild(newMessage);
-    }
 
-    function getMessages() {
-        shouldScroll = messages.scrollTop + messages.clientHeight == messages.scrollHeight;
-        appendMessage();
-
-        if (!shouldScroll) {
-            scrollToBottom();
-        }
-    }
-
-    function scrollToBottom() {
-        messages.scrollTop = messages.scrollHeight;
-    }
-
-    scrollToBottom();
-
-    });
+});
