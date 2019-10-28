@@ -13,31 +13,76 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"><%= name %></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
 
-        <!-- Foto Profil -->
-        <div class="container">
-            <div class="row">
-                <div class="col-2">
-                    <img src="/images/profile/bear.jpg" alt="Gak bisa oy" class="img-thumbnail">
-                    <!-- <img src="img/<?=$res['gambar']?>" alt="img/default.png" class="img-thumbnail"> -->
-                    <div class="hi">
-                        <p> Hi <%= name %> </p>
+        <div id="modal-default">
+            <!-- Foto Profil -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+                        <img src="/images/profile/bear.jpg" alt="Gak bisa oy" class="img-thumbnail">
+                        <!-- <img src="img/<?=$res['gambar']?>" alt="img/default.png" class="img-thumbnail"> -->
+                        <div class="hi">
+                            <p> Hi <%= name %> </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Jumbotron -->
-        <div class="jumbotron2 jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">WELCOME USER</h1>
-                <p> <a href="/livestreaming-user" class="btn-join">Join</a> </p>
-                <p> <a href="/logout" class="btn-logout">Logout</a> </p>
+    
+            <!-- Jumbotron -->
+            <div class="jumbotron2 jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">WELCOME USER</h1>
+                    <button class="btn-join make-a-room"> Make a Room </button>
+                    <p><input type="text" id="room-input" placeholder="Insert the room number" autocomplete="off" style="position:relative;margin-bottom:-150px;overflow: visible;z-index:999;"/></p>
+                    <button class="btn-join join-room"> Join </button>
+                    <span id='message'></span>
+                    <p> <a href="/logout" class="btn-logout">Logout</a> </p>
+                </div>
             </div>
         </div>
+            <!-- Movie -->
+        <video controls="controls" class="col-12 col-md-8" src="/movie/<%= film %>.mp4" id="video"></video>
+        <canvas id="preview" style="display: none;"></canvas>
+        
+        <!-- Movie -->
+        <img id="video-stream" controls="controls" class="col-12 col-md-8">
+
+        
+            <!-- Chat -->
+        <div class="d-flex flex-row-reverse" id="chat-modal">
+            <div class="chatbox">    
+                <div class="chatlogs" id="messages"></div>
+                <div class="chat-form">
+                    <input type="text" id="chat-input" placeholder="Say something nice" autocomplete="off"/>
+                    <button id="button">Send</button>
+                </div>
+            </div>
+        </div>
+        
+        
+            <!-- Change Movie -->
+        <div class="dropdown show dropdown-film col-12 col-md-8" id="change-film-modal">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Change Film</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#" id="joker">Joker</a>
+                <a class="dropdown-item" href="#" id="schematics">Schematics</a>
+                <a class="dropdown-item" href="#" id="avenger-endgame">Avenger Endgame</a>
+            </div>
+        </div>
+
         <% include layouts/foot %>
+        <script type="text/javascript" src="/javascripts/livestream.js"></script>
     </body>
 </html>

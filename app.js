@@ -42,11 +42,64 @@ var allRooms = [];
 //broadcast video
 io.on('connection',function(socket) {
   socket.on('stream',function(image) {
-    socket.broadcast.emit('stream',image);
+    socket.broadcast.to(people[socket.id].roomID).emit('stream',image);
   });
+
   //for sending message
   socket.on('message',function(data){
-    io.sockets.emit('message',data);
+    io.in(people[socket.id].roomID).emit('message',data);
+  });
+
+  //When user want to make a room
+  socket.on('makeRoom',function() {
+    console.log("Server " + socket.id + " join the server");
+    let exists = true;
+    while(exists){
+      let add = true;
+      var id = Math.floor(Math.random() * 900) + 100;
+      for (let index = 0; index < allRooms.length; index++) {
+        if(allRooms[index] == id){
+          add = false;
+          console.log("Mengacak kembali");
+        }
+      }
+      if(add){
+        allRooms.push(id);
+        exists = false;
+      }
+    }
+    var room = new Room(id,socket.id);
+    rooms[id] = room;
+
+    people[socket.id] = {"roomID" : id, "role" : "master"};
+
+    people[socket.id].roomID = id;
+    room.addPerson(socket.id);
+    socket.join(people[socket.id].roomID);
+    console.log("Server "+socket.id+" join the room "+people[socket.id].roomID);
+    clients.push(socket);
+    socket.emit("roomNumber", id);
+  });
+
+  socket.on("joinRoom",function(id) {
+    let exists = false;
+    for (let index = 0; index < allRooms.length; index++) {
+      if(allRooms[index] == id){
+        exists = true;
+        break;
+      }
+    }
+
+    if(exists){
+      var room = rooms[id];
+      room.addPerson(socket.id);
+      people[socket.id] = {"roomID" : id, "role" : "user"};
+      socket.join(people[socket.id].roomID);
+      console.log("Client "+socket.id+" Username:"+people[socket.id].name+" join room "+people[socket.id].roomID);
+      socket.emit('showReady',id);
+    }else{
+      socket.emit("errorMsgRoom", {msg: "The room does not exists, please check your input."});
+    }
   });
 });
 

@@ -16,7 +16,7 @@ router.get('/login',function(req,res,next){
     res.redirect('/users');
     return;
   }
-  let success = req.param('success');
+  let success = req.params['success'];
   res.render('login', {title : 'Login',success : success});
 });
 
@@ -30,7 +30,7 @@ router.get('/register',function(req,res,next){
 
 router.get('/users', function(req, res, next) {
   if(req.session.login){
-    (req.session.user == "master")?res.render('user-master',{name :'master'}):res.render('user-common',{name :req.session.user});
+    (req.session.user == "master")?res.render('user-master',{name :'master',film : 'joker'}):res.render('user-common',{name :req.session.user, film : 'joker'});
     return;
   }
   res.redirect('/login');
@@ -66,9 +66,9 @@ router.get('/logout', (req,res,next)=>{
   }
 });
 
-router.get('/livestreaming/:film', (req,res,next)=>{
+router.get('/livestreaming/:room/:film', (req,res,next)=>{
   if(req.session.login){
-    res.render('livestreaming',{name :'master',film:req.params["film"]});
+    res.render('livestreaming',{name :'master',film : req.params["film"], room : req.params["room"]});
     return;
   }
   res.redirect('/login');

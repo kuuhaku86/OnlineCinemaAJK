@@ -783,6 +783,8 @@ body::after {
         left: 33%;
         z-index: 999;
     }
+
+    
     
     .btn-logout{
         left: 29.5%;
@@ -1046,6 +1048,26 @@ body::after {
         color: white;
         padding: 5px 35px 5px 35px;
         font-family: 'Roboto Mono', monospace;
+    }
+
+    .join-room{
+        width : 100px;
+    }
+
+    .join-room:hover{
+        color:blue;
+        cursor: pointer;
+    }
+
+    .make-a-room{
+        width: 178px;
+        margin-left: -35px;
+        margin-top: -50px;
+        cursor: pointer;
+    }
+
+    .make-a-room:hover{
+        color: blue;
     }
 
     .btn-join:visited {
