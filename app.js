@@ -38,7 +38,7 @@ var people = {};
 var rooms = {};
 var clients = [];
 var allRooms = [];
-
+//io.to(socketid).emit('message', 'for your eyes only');
 //broadcast video
 io.on('connection',function(socket) {
   socket.on('stream',function(image) {
@@ -81,22 +81,22 @@ io.on('connection',function(socket) {
     socket.emit("roomNumber", id);
   });
 
-  socket.on("joinRoom",function(id) {
+  socket.on("joinRoom",function(data) {
     let exists = false;
     for (let index = 0; index < allRooms.length; index++) {
-      if(allRooms[index] == id){
+      if(allRooms[index] == data.id){
         exists = true;
         break;
       }
     }
 
     if(exists){
-      var room = rooms[id];
+      var room = rooms[data.id];
       room.addPerson(socket.id);
-      people[socket.id] = {"roomID" : id, "role" : "user"};
+      people[socket.id] = {"roomID" : data.id, "role" : "user", "name" : data.username};
       socket.join(people[socket.id].roomID);
       console.log("Client "+socket.id+" Username:"+people[socket.id].name+" join room "+people[socket.id].roomID);
-      socket.emit('showReady',id);
+      socket.emit('showReady',data.id);
     }else{
       socket.emit("errorMsgRoom", {msg: "The room does not exists, please check your input."});
     }

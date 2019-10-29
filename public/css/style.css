@@ -422,7 +422,7 @@ body::after {
 }
 
 /* Movie */
-#video {
+#video, #video-stream {
     position: relative;
     z-index: 999;
     max-width: 854px; 

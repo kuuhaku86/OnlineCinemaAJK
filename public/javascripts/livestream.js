@@ -1,4 +1,5 @@
 var socket = io('');
+var username = $('#navbarDropdown').html();
 
 $(function() {
     $("#modal-default").show();
@@ -28,11 +29,6 @@ function viewVideo(){
 }
 
 var modal = document.getElementById('simpleModal');
-// var modalBtn = document.getElementById('modalBtn');
-// var closeBtn = document.getElementsByClassName('closeBtn')[0];
-
-// modalBtn.addEventListener('click', openModal);
-// closeBtn.addEventListener('click', closeModal);
 
 function openModal() {
     modal.style.display = 'block';
@@ -68,7 +64,7 @@ socket.on('roomNumber',function(id) {
 $(".join-room").click(function(e){
     e.preventDefault();
     var id = $("#room-input").val();
-    socket.emit('joinRoom',id);
+    socket.emit('joinRoom',{id, username});
 });
 
 socket.on('showReady',function(id) {
@@ -119,7 +115,7 @@ $('#button').click(function (e) {
     if(message == "")return;
     // Send the message to the server
     socket.emit('message', {
-        user: $('#navbarDropdown').html(),
+        user: username,
         message: message
     });
     $('#chat-input').val('');
