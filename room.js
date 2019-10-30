@@ -8,15 +8,13 @@ Room.prototype.addPerson = function(personID) {
     this.people.push(personID);
 }
 
-Room.prototype.removePerson = function (person) {
-    let personID = -1;
+Room.prototype.removePerson = function (personID) {
     for (let i = 0; i < this.people.length; i++) {
-        if(this.people[i].id == person.id){
-            personID = i;
+        if(this.people[i] == personID){
+            this.people.splice(i,1);
             break;
         }
     }
-    this.people.remove(personID);
 }
 
 Room.prototype.getPerson = function (personID) {

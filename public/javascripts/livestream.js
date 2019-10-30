@@ -40,7 +40,7 @@ function closeModal() {
 
 $(".make-a-room").click(function(e) {
     e.preventDefault();
-    socket.emit('makeRoom');
+    socket.emit('makeRoom',username);
 });
 
 socket.on('stream', function(image){
@@ -144,4 +144,28 @@ $("#schematics").click(function(e) {
 $("#avenger-endgame").click(function(e) {
     e.preventDefault();
     changeFilm($("#avenger-endgame").html());
+});
+
+
+//Disconnect event
+window.onbeforeunload = function(e) { 
+    e.preventDefault();
+};
+
+window.onunload = function(e) {
+    socket.emit("disconnect");
+};
+
+$("#logout").click(function(e) {
+    socket.emit("disconnect");
+});
+
+//When change room master
+socket.on("changeRoomMaster",function(id) {
+    $("#video-stream").hide();
+    $("#video").show();
+    video.play();
+    setInterval(function(){
+        viewVideo(video,context);
+    },0);
 });
