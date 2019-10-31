@@ -2,7 +2,7 @@ var socket = io('');
 var username = $('#navbarDropdown').html();
 var videoPlay;
 var idUser;
-var roomId;
+var roomID;
 
 $(function() {
     $("#modal-default").show();
@@ -29,7 +29,7 @@ var video = document.getElementById("video");
 
 function viewVideo(){
     context.drawImage(video, 0, 0, context.width, context.height);
-    socket.emit('stream',canvas.toDataURL('image/webp'),roomId);
+    socket.emit('stream',canvas.toDataURL('image/webp'),roomID);
 }
 
 var modal = document.getElementById('simpleModal');
@@ -53,9 +53,9 @@ socket.on('stream', function(image){
 });
 
 socket.on('roomNumber',function(id,userID) {
-    if(!roomId){
+    if(!roomID){
         $('.navbar-brand').html($('.navbar-brand').html() + " Room : " + id);
-        roomId = id;
+        roomID = id;
     }
     $("#modal-default").hide();
     $("#video").show();
@@ -77,9 +77,9 @@ $(".join-room").click(function(e){
 });
 
 socket.on('showReady',function(id,userID) {
-    if(!roomId){
+    if(!roomID){
         $('.navbar-brand').html($('.navbar-brand').html() + " Room : " + id);
-        roomId = id;
+        roomID = id;
     }
     $("#modal-default").hide();
     $("#video-stream").show();
@@ -137,7 +137,7 @@ $('#button').click(function (e) {
     socket.emit('message', {
         user: username,
         message: message
-    },roomId);
+    },roomID);
     // Clear the input and focus it for a new message
     $('#chat-input').val('');
 });
@@ -173,11 +173,11 @@ window.onbeforeunload = function(e) {
 };
 
 window.onunload = function(e) {
-    socket.emit("disconnect");
+    socket.emit("disconnect",roomID);
 };
 
 $("#logout").click(function(e) {
-    socket.emit("disconnect");
+    socket.emit("disconnect",roomID);
 });
 
 //When change room master from disconnect
@@ -205,5 +205,5 @@ socket.on("onlineUser",function(data) {
 //When change room master from click
 $("body").on('click', '#dropdownChangeRoomMaster li', function () {
     let newMaster = $(this).data('id');
-    socket.emit("chooseRoomMaster",newMaster);
+    socket.emit("chooseRoomMaster",newMaster,roomID);
 });

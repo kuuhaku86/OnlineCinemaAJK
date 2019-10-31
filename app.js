@@ -39,10 +39,9 @@ var rooms = {};
 var allRooms = [];
 //io.to(socketid).emit('message', 'for your eyes only');
 
-function purge(s) {
+function purge(s,roomID) {
   if (people[s.id].roomID) { //user is in a room
-    var room = rooms[people[s.id].roomID]; //check which room user is in.
-    room.removePerson(s); //remove people from the room:people{}collection
+    rooms[roomID].removePerson(s); //remove people from the room:people{}collection
     if (s.id === room.owner) { //user in room and owns room
       if(room.people.length >= 1){
         var newMaster = room.people[0].id;
@@ -59,11 +58,11 @@ function purge(s) {
         }
       }
     }
+    if(roomID >= 0 && room.people.length >= 1) io.sockets.to(room.owner).emit("onlineUser",room.people);
+    console.log(rooms[roomID].people);
   }
   //delete user from people collection
-  if(room.people.length >= 1) io.sockets.to(room.owner).emit("onlineUser",room.people);
   delete people[s.id];
-  console.log(room.people);
 }
 
 //broadcast video
@@ -130,15 +129,15 @@ io.on('connection',function(socket) {
     }
   });
 
-  socket.on("disconnect", function() {
+  socket.on("disconnect", function(roomID) {
     if (typeof people[socket.id] !== "undefined") { //this handles the refresh of the name screen
-      purge(socket);
+      purge(socket,roomID);
     }
   });
 
   //Change room master from click
-  socket.on("chooseRoomMaster",function(newMaster) {
-    let room = rooms[people[socket.id].roomID];
+  socket.on("chooseRoomMaster",function(newMaster,roomID) {
+    let room = rooms[roomID];
     rooms[room.id].owner = newMaster;
     io.sockets.to(rooms[room.id].owner).emit("changeRoomMaster");
     io.sockets.to(rooms[room.id].owner).emit("onlineUser",room.people);
