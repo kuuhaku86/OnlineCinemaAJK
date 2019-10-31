@@ -66,20 +66,4 @@ router.get('/logout', (req,res,next)=>{
   }
 });
 
-router.get('/livestreaming/:room/:film', (req,res,next)=>{
-  if(req.session.login){
-    res.render('livestreaming',{name :'master',film : req.params["film"], room : req.params["room"]});
-    return;
-  }
-  res.redirect('/login');
-});
-
-router.get('/livestreaming-user', (req,res,next)=>{
-  if(req.session.login){
-    res.render('livestreaming-user',{name :req.session.user});
-    return;
-  }
-  res.redirect('/login');
-});
-
 module.exports = router;

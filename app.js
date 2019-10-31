@@ -42,38 +42,39 @@ var allRooms = [];
 function purge(s) {
   if (people[s.id].roomID) { //user is in a room
     var room = rooms[people[s.id].roomID]; //check which room user is in.
-    room.removePerson(s.id); //remove people from the room:people{}collection
+    room.removePerson(s); //remove people from the room:people{}collection
     if (s.id === room.owner) { //user in room and owns room
-        if(room.people.length >= 1){
-          var newMaster = room.people[0];
-          room.owner = newMaster;
-          console.log(newMaster);
-          io.sockets.to(newMaster).emit("changeRoomMaster",room.id);
-        }else{
-          delete rooms[room.id];
-          for (let i = 0; i < allRooms.length; i++) {
-            if(allRooms[i] == room.id){
-              allRooms.splice(i,1);
-              break;
-            }
+      if(room.people.length >= 1){
+        var newMaster = room.people[0].id;
+        rooms[people[s.id].roomID].owner = newMaster;
+        console.log(newMaster);
+        io.sockets.to(newMaster).emit("changeRoomMaster");
+      }else{
+        delete rooms[room.id];
+        for (let i = 0; i < allRooms.length; i++) {
+          if(allRooms[i] == room.id){
+            allRooms.splice(i,1);
+            break;
           }
         }
+      }
     }
   }
   //delete user from people collection
+  if(room.people.length >= 1) io.sockets.to(room.owner).emit("onlineUser",room.people);
   delete people[s.id];
   console.log(room.people);
 }
 
 //broadcast video
 io.on('connection',function(socket) {
-  socket.on('stream',function(image) {
-    socket.broadcast.to(people[socket.id].roomID).emit('stream',image);
+  socket.on('stream',function(image,roomID) {
+    socket.broadcast.to(roomID).emit('stream',image);
   });
 
   //for sending message
-  socket.on('message',function(data){
-    io.in(people[socket.id].roomID).emit('message',data);
+  socket.on('message',function(data,roomID){
+    io.in(roomID).emit('message',data);
   });
 
   //When user want to make a room
@@ -83,8 +84,8 @@ io.on('connection',function(socket) {
     while(exists){
       let add = true;
       var id = Math.floor(Math.random() * 900) + 100;
-      for (let index = 0; index < allRooms.length; index++) {
-        if(allRooms[index] == id){
+      for (let i = 0; i < allRooms.length; i++) {
+        if(allRooms[i] == id){
           add = false;
           id = Math.floor(Math.random() * 900) + 100;
           console.log("Mengacak kembali");
@@ -101,16 +102,16 @@ io.on('connection',function(socket) {
     people[socket.id] = {"roomID" : id, "role" : "master", "name" : username};
 
     people[socket.id].roomID = id;
-    room.addPerson(socket.id);
+    room.addPerson(socket,username);
     socket.join(people[socket.id].roomID);
     console.log("Server "+socket.id+" join the room "+people[socket.id].roomID);
-    io.sockets.to(socket.id).emit("roomNumber", id);
+    io.sockets.to(socket.id).emit("roomNumber", id,socket.id);
   });
 
   socket.on("joinRoom",function(data) {
     let exists = false;
-    for (let index = 0; index < allRooms.length; index++) {
-      if(allRooms[index] == data.id){
+    for (let i = 0; i < allRooms.length; i++) {
+      if(allRooms[i] == data.id){
         exists = true;
         break;
       }
@@ -118,13 +119,14 @@ io.on('connection',function(socket) {
 
     if(exists){
       var room = rooms[data.id];
-      room.addPerson(socket.id);
+      room.addPerson(socket,data.username);
       people[socket.id] = {"roomID" : data.id, "role" : "user", "name" : data.username};
       socket.join(people[socket.id].roomID);
       console.log("Client "+socket.id+" Username:"+people[socket.id].name+" join room "+people[socket.id].roomID);
-      io.sockets.to(socket.id).emit('showReady',data.id);
+      io.sockets.to(socket.id).emit('showReady',data.id,socket.id);
+      io.sockets.to(rooms[people[socket.id].roomID].owner).emit("onlineUser",rooms[people[socket.id].roomID].people);
     }else{
-      socket.emit("errorMsgRoom", {msg: "The room does not exists, please check your input."});
+      socket.emit("errorMsgRoom", "The room does not exists, please check your input.");
     }
   });
 
@@ -133,7 +135,15 @@ io.on('connection',function(socket) {
       purge(socket);
     }
   });
-  
+
+  //Change room master from click
+  socket.on("chooseRoomMaster",function(newMaster) {
+    let room = rooms[people[socket.id].roomID];
+    rooms[room.id].owner = newMaster;
+    io.sockets.to(rooms[room.id].owner).emit("changeRoomMaster");
+    io.sockets.to(rooms[room.id].owner).emit("onlineUser",room.people);
+    io.sockets.to(socket.id).emit("showReady",room.id,socket.id);
+  });
 });
 
 // catch 404 and forward to error handler

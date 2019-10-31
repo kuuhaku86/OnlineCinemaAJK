@@ -1,5 +1,8 @@
 var socket = io('');
 var username = $('#navbarDropdown').html();
+var videoPlay;
+var idUser;
+var roomId;
 
 $(function() {
     $("#modal-default").show();
@@ -8,6 +11,7 @@ $(function() {
     //master
     $("#video").hide();
     $("#change-film-modal").hide();
+    $("#change-room-master").hide();
 
     //user
     $("#video-stream").hide();
@@ -25,7 +29,7 @@ var video = document.getElementById("video");
 
 function viewVideo(){
     context.drawImage(video, 0, 0, context.width, context.height);
-    socket.emit('stream',canvas.toDataURL('image/webp'));
+    socket.emit('stream',canvas.toDataURL('image/webp'),roomId);
 }
 
 var modal = document.getElementById('simpleModal');
@@ -48,15 +52,20 @@ socket.on('stream', function(image){
     img.src = image;
 });
 
-socket.on('roomNumber',function(id) {
-    $('.navbar-brand').html($('.navbar-brand').html() + " Room : " + id);
+socket.on('roomNumber',function(id,userID) {
+    if(!roomId){
+        $('.navbar-brand').html($('.navbar-brand').html() + " Room : " + id);
+        roomId = id;
+    }
     $("#modal-default").hide();
     $("#video").show();
     $("#chat-modal").show();
     $("#change-film-modal").show();
     $(".chatbox").show();
+    $("#change-room-master").show();
+    idUser = userID;
     video.play();
-    setInterval(function(){
+    videoPlay = setInterval(function(){
         viewVideo(video,context);
     },0);
 });
@@ -67,12 +76,23 @@ $(".join-room").click(function(e){
     socket.emit('joinRoom',{id, username});
 });
 
-socket.on('showReady',function(id) {
-    $('.navbar-brand').html($('.navbar-brand').html() + " Room : " + id);
+socket.on('showReady',function(id,userID) {
+    if(!roomId){
+        $('.navbar-brand').html($('.navbar-brand').html() + " Room : " + id);
+        roomId = id;
+    }
     $("#modal-default").hide();
     $("#video-stream").show();
     $("#chat-modal").show();
     $(".chatbox").show();
+
+    //Hide and stop room master component
+    $("#change-room-master").hide();
+    $("#video").hide();
+    $("#change-film-modal").hide();
+    idUser = userID;
+    video.pause();
+    if(videoPlay)clearInterval(videoPlay);
 });
 
 socket.on("errorMsgRoom", function(msg) {
@@ -89,6 +109,7 @@ socket.on('message', function (data) {
 
     scrollToBottom();
 });
+
     // When the form is submitted
 
     // Get the input field
@@ -103,7 +124,6 @@ input.addEventListener("keyup", function(event) {
         // Trigger the button element with a click
         document.getElementById('button').click();
     }
-
     
 });
 
@@ -117,9 +137,9 @@ $('#button').click(function (e) {
     socket.emit('message', {
         user: username,
         message: message
-    });
-    $('#chat-input').val('');
+    },roomId);
     // Clear the input and focus it for a new message
+    $('#chat-input').val('');
 });
 
 
@@ -160,12 +180,30 @@ $("#logout").click(function(e) {
     socket.emit("disconnect");
 });
 
-//When change room master
-socket.on("changeRoomMaster",function(id) {
+//When change room master from disconnect
+socket.on("changeRoomMaster",function() {
     $("#video-stream").hide();
     $("#video").show();
+    $("#change-film-modal").show();
+    $("#change-room-master").show();
     video.play();
     setInterval(function(){
         viewVideo(video,context);
     },0);
+});
+
+//Knowing who is online
+socket.on("onlineUser",function(data) {
+    $("#dropdownChangeRoomMaster").html("");
+    for (let i = 0; i < data.length; i++) {
+        if(data[i].id != idUser){
+            $("#dropdownChangeRoomMaster").append("<li class='dropdown-item' data-id=" + data[i].id + ">" + data[i].name + "</li>");
+        }
+    }
+});
+
+//When change room master from click
+$("body").on('click', '#dropdownChangeRoomMaster li', function () {
+    let newMaster = $(this).data('id');
+    socket.emit("chooseRoomMaster",newMaster);
 });

@@ -4,20 +4,20 @@ function Room(id, owner) {
     this.owner = owner;
 }
 
-Room.prototype.addPerson = function(personID) {
-    this.people.push(personID);
+Room.prototype.addPerson = function(person,username) {
+    this.people.push({"id" : person.id, "name" : username});
 }
 
-Room.prototype.removePerson = function (personID) {
+Room.prototype.removePerson = function (person) {
     for (let i = 0; i < this.people.length; i++) {
-        if(this.people[i] == personID){
+        if(this.people[i].id == person.id){
             this.people.splice(i,1);
             break;
         }
     }
 }
 
-Room.prototype.getPerson = function (personID) {
+Room.prototype.getPerson = function (person) {
     let person = null;
     for (let i = 0; i < this.people.length; i++) {
         if(this.people[i].id == person.id){
