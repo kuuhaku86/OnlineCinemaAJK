@@ -173,11 +173,11 @@ window.onbeforeunload = function(e) {
 };
 
 window.onunload = function(e) {
-    socket.emit("disconnect",roomID);
+    (roomID)?socket.emit("disconnect",roomID):socket.emit("disconnect",0);
 };
 
 $("#logout").click(function(e) {
-    socket.emit("disconnect",roomID);
+    (roomID)?socket.emit("disconnect",roomID):socket.emit("disconnect",0);
 });
 
 //When change room master from disconnect

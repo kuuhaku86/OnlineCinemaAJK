@@ -4,10 +4,8 @@ const session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var busboy = require('then-busboy');
 var fileUpload = require('express-fileupload');
 var indexRouter = require('./routes/index');
-const db = require('./db');
 var Room = require('./room');
 
 var app = express();
@@ -41,25 +39,25 @@ var allRooms = [];
 
 function purge(s,roomID) {
   if (people[s.id].roomID) { //user is in a room
-    rooms[roomID].removePerson(s); //remove people from the room:people{}collection
-    if (s.id === room.owner) { //user in room and owns room
-      if(room.people.length >= 1){
-        var newMaster = room.people[0].id;
+    rooms[people[s.id].roomID].removePerson(s); //remove people from the room:people{}collection
+    if (s.id ===  rooms[people[s.id].roomID].owner) { //user in room and owns room
+      if(rooms[people[s.id].roomID].people.length >= 1){
+        var newMaster = rooms[people[s.id].roomID].people[0].id;
         rooms[people[s.id].roomID].owner = newMaster;
         console.log(newMaster);
         io.sockets.to(newMaster).emit("changeRoomMaster");
       }else{
-        delete rooms[room.id];
+        delete rooms[people[s.id].roomID];
         for (let i = 0; i < allRooms.length; i++) {
-          if(allRooms[i] == room.id){
+          if(allRooms[i] == people[s.id].roomID){
             allRooms.splice(i,1);
             break;
           }
         }
       }
     }
-    if(roomID >= 0 && room.people.length >= 1) io.sockets.to(room.owner).emit("onlineUser",room.people);
-    console.log(rooms[roomID].people);
+    if(roomID >= 0 && rooms[people[s.id].roomID] && rooms[people[s.id].roomID].people.length >= 1) io.sockets.to(rooms[people[s.id].roomID].owner).emit("onlineUser",rooms[people[s.id].roomID].people);
+    if(rooms[people[s.id].roomID]) console.log(rooms[people[s.id].roomID].people);
   }
   //delete user from people collection
   delete people[s.id];
@@ -101,7 +99,7 @@ io.on('connection',function(socket) {
     people[socket.id] = {"roomID" : id, "role" : "master", "name" : username};
 
     people[socket.id].roomID = id;
-    room.addPerson(socket,username);
+    rooms[id].addPerson(socket,username);
     socket.join(people[socket.id].roomID);
     console.log("Server "+socket.id+" join the room "+people[socket.id].roomID);
     io.sockets.to(socket.id).emit("roomNumber", id,socket.id);
@@ -118,7 +116,7 @@ io.on('connection',function(socket) {
 
     if(exists){
       var room = rooms[data.id];
-      room.addPerson(socket,data.username);
+      rooms[data.id].addPerson(socket,data.username);
       people[socket.id] = {"roomID" : data.id, "role" : "user", "name" : data.username};
       socket.join(people[socket.id].roomID);
       console.log("Client "+socket.id+" Username:"+people[socket.id].name+" join room "+people[socket.id].roomID);
