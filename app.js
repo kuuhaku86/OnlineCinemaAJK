@@ -38,7 +38,7 @@ var allRooms = [];
 //io.to(socketid).emit('message', 'for your eyes only');
 
 function purge(s,roomID) {
-  if (people[s.id].roomID) { //user is in a room
+  if (people[s.id] && people[s.id].roomID) { //user is in a room
     rooms[people[s.id].roomID].removePerson(s); //remove people from the room:people{}collection
     if (s.id ===  rooms[people[s.id].roomID].owner) { //user in room and owns room
       if(rooms[people[s.id].roomID].people.length >= 1){
@@ -60,7 +60,7 @@ function purge(s,roomID) {
     if(rooms[people[s.id].roomID]) console.log(rooms[people[s.id].roomID].people);
   }
   //delete user from people collection
-  delete people[s.id];
+  if(people[s.id]) delete people[s.id];
 }
 
 //broadcast video
