@@ -123,7 +123,7 @@ body::after {
 
 /* User and Room Master */
 .btn-join{
-    top: 450px;
+    top: 400px;
     left: 830px;
 }
 
@@ -135,6 +135,18 @@ body::after {
 .btn-logout2{
     top: 470px;
     left: 821px;
+}
+
+#room-input {
+    position: relative;
+    left: 782px;
+    top: 406px;
+    background:rgba(255, 255, 255, 0.2);
+    border-block: white;
+    color: white;
+    border-radius: 30px;
+    padding: 2px 10px 2px 10px;
+    text-align: center;
 }
 
 /* User */
@@ -172,7 +184,6 @@ body::after {
 }
 
 .img-thumbnail {
-    /* top: 100%; */
     top: 230px;
     left: 505%;
 }
@@ -180,7 +191,6 @@ body::after {
 .img-thumbnail3 {
     top: 80px;
     left: 302%;
-    /* margin-top: -100px; */
 }
 
 .hi p {
@@ -240,7 +250,6 @@ body::after {
 }
 
 /* Halaman Livestreaming.ejs */
-
 #dropdownMenuLink1 {
     background-color: #000000;
     position: relative;
@@ -254,20 +263,11 @@ body::after {
     top: -70px;
 }
 
-/* .button {
-    position: relative;
-    z-index: 3;
-    left: 1100px;
-    margin-top: -100px;
-} */
-
 }
 
 #dropdownMenuLink1 {
     background-color: #000000;
     position: relative;
-    /* width: 110%;
-    left: 20px; */
 }
 
 #dropdownMenuLink {
@@ -279,7 +279,6 @@ body::after {
 .display-4_login {
     left: 110px;
     top: 60px;
-    /* position: relative; */
     margin-top: 150px;
     font-weight: 400;
     font-size: 70px;
@@ -288,7 +287,6 @@ body::after {
 
 .lead_login {
     text-align: left;
-    /* position: relative; */
     left: 240px;
     top: 55px;
     font-size: 15px;
@@ -300,7 +298,6 @@ body::after {
 .display-4_register {
     left: 110px;
     top: 60px;
-    /* position: relative; */
     margin-top: 150px;
     font-weight: 400;
     font-size: 70px;
@@ -309,7 +306,6 @@ body::after {
 
 .lead_register {
     text-align: left;
-    /* position: relative; */
     left: 240px;
     top: 55px;
     font-size: 15px;
@@ -317,71 +313,6 @@ body::after {
     font-weight: 500;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4);
 }
-
-/* User */
-/* .jumbotron2 {
-    background-image: url('/images/coba6.jpg');
-    background-size: cover;
-    height: 650px;
-    position: relative;
-}
-
-.jumbotron2 .container {
-    position: relative;
-    z-index: 1;
-}
-
-.jumbotron2::before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 12%;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
-    position: absolute;
-    top: 0;
-}
-
-.jumbotron2 .display-4 {
-    font-family: 'Viga', sans-serif;
-    text-align: right;
-    position: relative;
-    top: 160px;
-    right: 30px;
-    color: #F8F7F4;
-}  */
-
-/* Room Master */
-/* .jumbotron3 {
-    background-image: url('/images/coba7.jpg');
-    background-size: cover;
-    height: 650px;
-    position: relative;
-}
-
-.jumbotron3 .container {
-    position: relative;
-    z-index: 1;
-}
-
-.jumbotron3::before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 12%;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
-    position: absolute;
-    top: 0;
-}
-
-.jumbotron3 .display-4 {
-    font-family: 'Viga', sans-serif;
-    text-align: right;
-    position: relative;
-    left: 30px;
-    font-size: 45px;
-    top: 160px;
-    color: #F8F7F4;
-} */
 
 .dropdown-menu {
     color: black;
@@ -396,8 +327,6 @@ body::after {
 }
 
 .jumbotron4 .container {
-    /* position: relative;
-    z-index: 1; */
     position: relative;
 }
 
@@ -538,6 +467,7 @@ body::after {
 /* Phone Version */
 @media (max-width: 576px) {
     /* Halaman Index.ejs */
+
     /* Nonton Bareng */
     .display-4 {
         width: 100%;
@@ -547,8 +477,7 @@ body::after {
         font-size: 50px; 
         text-shadow: 0 0 5px rgba(0,0,0,0.7), 0 0 5px rgba(0,0,0,0.7);
         margin-bottom: 40px;
-        color: #F8F7F4;
-        
+        color: #F8F7F4;        
     }
     
     /* Deskripsi */
@@ -581,10 +510,8 @@ body::after {
     .nav-link:hover::after {
         content: '';
         display: block;
-        /* border-bottom: 2px solid white; */
         border-bottom: 2px solid black;
         width: 0% !important;
-        /* margin: auto; */
         padding-bottom: 2px;
         margin-bottom: -4px;
     }
@@ -879,9 +806,6 @@ body::after {
         z-index: 1;
         width: 350px;
         height: 330px;
-        /* right: 50%;
-        bottom: 90px;
-        left: 50%; */
         opacity: 0.6;
         background-color: black;
         color: white;
@@ -1050,6 +974,16 @@ body::after {
         font-family: 'Roboto Mono', monospace;
     }
 
+    .btn-join:visited{
+        color: white !important;
+    }
+
+    #change-room-master {
+        position: relative;
+        right: 390px;
+        bottom: 120px;
+    }
+
     .join-room{
         width : 100px;
     }
@@ -1104,17 +1038,13 @@ body::after {
 
     .btn-upload,.btn-update{
         margin-top: 20px;
-        /* width: 540px;
-        height: 35px;; */
         position: relative;
         font-family: 'Roboto Mono', monospace;
-        /* padding: 5px 35px 5px 35px; */
         color: white;
         border: 1px solid white;
         border-radius: 2px;
         background: rgba(0,0,0,0.7);
         z-index : 999;
-        /* left: 20%; */
     }
 
     .img-thumbnail {
@@ -1198,8 +1128,6 @@ body::after {
     }
     /* Halaman users-master.ejs */
     .dropdown-film{
-        /* height: 50px;
-        width: 150px; */
         position: relative;
         z-index: 9999;
     }
