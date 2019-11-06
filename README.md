@@ -32,3 +32,6 @@ Update Jobdesk: <br>
 Update Jobdesk: <br>
   Yohan : fix bug suara film dan implementasi untuk mengetahui siapa aja yang online + multi-room<br>
   Zahra : implementasi fullscreen di halaman user dan chat yang auto scroll<br><br>
+Update Jobdesk: <br>
+  Yohan & Zahra: bantu-bantu<br>
+  Mas Nanta : Fix bug sound<br><br>
