@@ -202,12 +202,12 @@ socket.on("changeRoomMaster",function() {
     $("#video").show();
     $("#change-film-modal").show();
     $("#change-room-master").show();
-    audio.pause();
-    audio.src = "/audio/" + filmName + ".ogg";
     video.play();
     setInterval(function(){
         viewVideo(video,context);
     },0);
+    audio.pause();
+    audio.src = "/audio/" + filmName + ".ogg";
 });
 
 //Knowing who is online
