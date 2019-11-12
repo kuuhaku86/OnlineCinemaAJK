@@ -32,6 +32,7 @@ context.height = canvas.height;
 function viewVideo(){
     context.drawImage(video, 0, 0, context.width, context.height);
     socket.emit('stream',canvas.toDataURL('image/webp'),roomID,video.currentTime,filmNamee);
+    audio.pause();
 }
 
 var modal = document.getElementById('simpleModal');
