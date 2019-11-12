@@ -137,7 +137,7 @@ io.on('connection',function(socket) {
   });
 
   //Change room master from click
-  socket.on("chooseRoomMaster",function(newMaster,roomID) {
+  socket.on("chooseRoomMaster1",function(newMaster,roomID) {
     let room = rooms[roomID];
     rooms[room.id].owner = newMaster;
     io.sockets.to(rooms[room.id].owner).emit("changeRoomMaster");
