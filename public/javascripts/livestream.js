@@ -204,7 +204,6 @@ socket.on("changeRoomMaster",function() {
     $("#change-room-master").show();
     audio.pause();
     audio.src = "/audio/" + filmName + ".ogg";
-    audio.play();
     video.play();
     setInterval(function(){
         viewVideo(video,context);
