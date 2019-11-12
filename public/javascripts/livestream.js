@@ -224,6 +224,7 @@ socket.on("onlineUser",function(data) {
 //When change room master from click
 $("body").on('click', '#dropdownChangeRoomMaster li', function () {
     let newMaster = $(this).data('id');
+    audio.pause();
     socket.emit("chooseRoomMaster",newMaster,roomID);
 });
 
