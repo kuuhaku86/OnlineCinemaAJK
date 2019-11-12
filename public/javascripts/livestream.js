@@ -151,6 +151,7 @@ function changeFilm(filmName) {
     filmName = filmName.toLowerCase();
     filmName = filmName.replace(" ","-");
     filmNamee = filmName;
+    audio.pause();
     socket.emit("changeAudio",roomID,filmNamee);
     video.src = "/movie/" + filmName + ".mp4";
     video.play();
@@ -160,6 +161,7 @@ function changeAudio(filmName,time) {
     filmName = filmName.toLowerCase();
     filmName = filmName.replace(" ","-");
     filmNamee = filmName;
+    audio.pause();
     audio.src = "/audio/" + filmName + ".ogg";
     audio.currentTime = time;
     audio.play();
@@ -200,6 +202,9 @@ socket.on("changeRoomMaster",function() {
     $("#video").show();
     $("#change-film-modal").show();
     $("#change-room-master").show();
+    audio.pause();
+    audio.src = "/audio/" + filmName + ".ogg";
+    audio.play();
     video.play();
     setInterval(function(){
         viewVideo(video,context);
