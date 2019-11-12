@@ -143,6 +143,7 @@ io.on('connection',function(socket) {
     io.sockets.to(rooms[room.id].owner).emit("changeRoomMaster");
     io.sockets.to(rooms[room.id].owner).emit("onlineUser",room.people);
     io.sockets.to(socket.id).emit("showReady",room.id,socket.id);
+    io.in(roomID).emit('changeFilm',filmName);
   });
 
   //Sound handler
