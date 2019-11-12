@@ -35,6 +35,8 @@ app.use('/', indexRouter);
 var people = {};
 var rooms = {};
 var allRooms = [];
+var timeRoom = new Object;
+var filmRoom = new Object;
 //io.to(socketid).emit('message', 'for your eyes only');
 
 function purge(s,roomID) {
@@ -65,7 +67,9 @@ function purge(s,roomID) {
 
 //broadcast video
 io.on('connection',function(socket) {
-  socket.on('stream',function(image,roomID) {
+  socket.on('stream',function(image,roomID,time,filmName) {
+    timeRoom[roomID] = time;
+    filmRoom[roomID] = filmName;
     socket.broadcast.to(roomID).emit('stream',image);
   });
 
@@ -115,12 +119,11 @@ io.on('connection',function(socket) {
     }
 
     if(exists){
-      var room = rooms[data.id];
       rooms[data.id].addPerson(socket,data.username);
       people[socket.id] = {"roomID" : data.id, "role" : "user", "name" : data.username};
       socket.join(people[socket.id].roomID);
       console.log("Client "+socket.id+" Username:"+people[socket.id].name+" join room "+people[socket.id].roomID);
-      io.sockets.to(socket.id).emit('showReady',data.id,socket.id);
+      io.sockets.to(socket.id).emit('showReady',data.id,socket.id,timeRoom[people[socket.id].roomID],filmRoom[people[socket.id].roomID]);
       io.sockets.to(rooms[people[socket.id].roomID].owner).emit("onlineUser",rooms[people[socket.id].roomID].people);
     }else{
       socket.emit("errorMsgRoom", "The room does not exists, please check your input.");
@@ -140,6 +143,33 @@ io.on('connection',function(socket) {
     io.sockets.to(rooms[room.id].owner).emit("changeRoomMaster");
     io.sockets.to(rooms[room.id].owner).emit("onlineUser",room.people);
     io.sockets.to(socket.id).emit("showReady",room.id,socket.id);
+  });
+
+  //Sound handler
+
+  socket.on("videoOnPlay",function(time,roomID) {
+    io.in(roomID).emit('videoPlay',time);
+  });
+
+  socket.on("videoOnPause",function(time,roomID) {
+    io.in(roomID).emit('videoPause',time);
+  });
+
+  socket.on("videoOnPlaying",function(time,roomID) {
+    io.in(roomID).emit('videoPlay',time);
+  });
+
+  socket.on("videoOnSeeked",function(time,roomID) {
+    io.in(roomID).emit('videoPlay',time);
+  });
+
+  socket.on("videoOnVolumeChange",function(volume,roomID) {
+    io.in(roomID).emit('videoVolumeChange',volume);
+  });
+
+  socket.on("changeAudio",function(roomID,filmName) {
+    filmRoom[roomID] = filmName;
+    socket.broadcast.to(roomID).emit('changeFilm',filmName);
   });
 });
 

@@ -53,7 +53,9 @@
             <!-- Movie -->
         <video controls="controls" class="col-12 col-md-8" src="/movie/<%= film %>.mp4" id="video"></video>
         <canvas id="preview" style="display: none;"></canvas>
-        
+        <audio id="audio" style="display: none;">
+            <source src="/audio/<%= film %>.ogg" type="audio/ogg">
+        </audio>
         <!-- Movie -->
         <img id="video-stream" controls="controls" class="col-12 col-md-8">
 
@@ -89,7 +91,7 @@
               <!-- <li class="dropdown-item" data-id="..." href="#">Action</li> -->
             </div>
           </div>
-
+            <div class="filmm"><%=film%></div>
         <% include layouts/foot %>
         <script type="text/javascript" src="/javascripts/livestream.js"></script>
     </body>

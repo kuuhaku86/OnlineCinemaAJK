@@ -1,5 +1,8 @@
 var socket = io('');
 var username = $('#navbarDropdown').html();
+var video = document.getElementById("video");
+var audio = document.getElementById("audio");
+var filmNamee = $(".filmm").html();
 var videoPlay;
 var idUser;
 var roomID;
@@ -25,11 +28,10 @@ canvas.height = 700;
 context.width = canvas.width;
 context.height = canvas.height;
 
-var video = document.getElementById("video");
 
 function viewVideo(){
     context.drawImage(video, 0, 0, context.width, context.height);
-    socket.emit('stream',canvas.toDataURL('image/webp'),roomID);
+    socket.emit('stream',canvas.toDataURL('image/webp'),roomID,video.currentTime,filmNamee);
 }
 
 var modal = document.getElementById('simpleModal');
@@ -76,7 +78,7 @@ $(".join-room").click(function(e){
     socket.emit('joinRoom',{id, username});
 });
 
-socket.on('showReady',function(id,userID) {
+socket.on('showReady',function(id,userID,time,filmName) {
     if(!roomID){
         $('.navbar-brand').html($('.navbar-brand').html() + " Room : " + id);
         roomID = id;
@@ -93,6 +95,7 @@ socket.on('showReady',function(id,userID) {
     idUser = userID;
     video.pause();
     if(videoPlay)clearInterval(videoPlay);
+    changeAudio(filmNamee,time);
 });
 
 socket.on("errorMsgRoom", function(msg) {
@@ -147,8 +150,19 @@ $('#button').click(function (e) {
 function changeFilm(filmName) {
     filmName = filmName.toLowerCase();
     filmName = filmName.replace(" ","-");
+    filmNamee = filmName;
+    socket.emit("changeAudio",roomID,filmNamee);
     video.src = "/movie/" + filmName + ".mp4";
     video.play();
+}
+
+function changeAudio(filmName,time) {
+    filmName = filmName.toLowerCase();
+    filmName = filmName.replace(" ","-");
+    filmNamee = filmName;
+    audio.src = "/audio/" + filmName + ".ogg";
+    audio.currentTime = time;
+    audio.play();
 }
 
 $("#joker").click(function(e) {
@@ -206,4 +220,45 @@ socket.on("onlineUser",function(data) {
 $("body").on('click', '#dropdownChangeRoomMaster li', function () {
     let newMaster = $(this).data('id');
     socket.emit("chooseRoomMaster",newMaster,roomID);
+});
+
+
+//Sound
+video.onplay = function(){
+    socket.emit("videoOnPlay",video.currentTime,roomID);
+};
+
+video.onpause = function() {
+    socket.emit("videoOnPause",video.currentTime,roomID);
+}
+
+video.onplaying = function() {
+    socket.emit("videoOnPlaying",video.currentTime,roomID);
+}
+
+video.onseeked = function() {
+    socket.emit("videoOnSeeked",video.currentTime,roomID);
+}
+
+video.onvolumechange = function() {
+    socket.emit("videoOnVolumeChange",video.volume,roomID);
+}
+
+socket.on("videoPlay",function(time) {
+    audio.currentTime = time;
+    audio.play();
+});
+
+socket.on("videoPause",function(time) {
+    audio.currentTime = time;
+    audio.pause()
+});
+
+socket.on("videoVolumeChange",function(volume) {
+    audio.volume = volume;
+    audio.play();
+});
+
+socket.on("changeFilm",function(filmName) {
+    changeAudio(filmName,0);
 });
