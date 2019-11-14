@@ -39,16 +39,16 @@ OnlineCinemaAJK is a web based application that have a purpose to connect every 
 2. The computer that acts as the server can open the web with _localhost:8600_ address in the browser
 3. The computer that acts as common user can open the web with _IPServer:8600_ , you must change the _IPServer_ with the server IP address
 4. Login if you have an account in that web and register if you don't have one
-   ![](/public/images/1.png)
-   ![](/public/images/2.png)
+   ![](/public/images/1.PNG)
+   ![](/public/images/2.PNG)
 5. The user that wants to acts as a room master can click the _make a room_ button to make a new room
 6. Other user that wants to join the room that had been created by the master room can fill the text field input below the _make a room_ button and the click _join room_ button
-   ![](/public/images/3.png)
-   ![](/public/images/4.png)
+   ![](/public/images/3.PNG)
+   ![](/public/images/4.PNG)
 7. All the user can chatting with the user that join the same room in the chat field
    <br>
-   ![](/public/images/5.png)
+   ![](/public/images/5.PNG)
 8.  The master room can change the film that played in the room by clicking dropdown button below the film
-   ![](/public/images/7.png)
+   ![](/public/images/7.PNG)
 11. The master room can give his/her position as a master room to the other user in the room
-    ![](/public/images/6.png)
+    ![](/public/images/6.PNG)
