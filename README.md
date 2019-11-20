@@ -23,7 +23,7 @@ OnlineCinemaAJK is a web based application that have a purpose to connect every 
   * MySQL
   * NodeJS \(ver 10.x.x\)
 
-* **How to Install this game:**
+* **How to Install this app:**
     * _git clone_ [https://github.com/kuuhaku86/OnlineCinemaAJK.git](https://github.com/kuuhaku86/OnlineCinemaAJK.git)
     * Get in to folder OnlineCinemaAJK
     * Run in terminal _npm install --save_
