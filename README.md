@@ -1,10 +1,40 @@
-# OnlineCinemaAJK
+![logo](public/images/logo.png)
 
-OnlineCinemaAJK is a web based application that have a purpose to connect every people in the world through a film that played in an online web that acts as a cinema. OnlineCinemaAJK was build with Node.JS and Socket.IO technology so the apps can run in real-time.
+## Content
+- [1. Description](#1-description)
+- [2. Installation](#2-installation)
+  - [Requirements:](#requirements)
+  - [How to Install](#how-to-install)
+- [3. How to Use](#3-how-to-use)
+  - [Features](#features)
+  - [Step to Use](#step-to-use)
+- [4. Conclusion](#4-conclusion)
+- [5. Used Tools and Reference](#5-used-tools-and-reference)
+  - [Tools](#tools)
+  - [Reference](#reference)
 
----
+# 1. Description
+OnlineCinemaAJK is a web based application that have a purpose to connect every people in the world through a film that played in an online web that acts as a cinema, so the people can watch a movie together, have chat with their peers, and have fun. OnlineCinemaAJK was build with Node.JS and Socket.IO technology so the apps can run real-time.
 
-## Features in OnlineCinemaAJK
+# 2. Installation
+## Requirements:
+
+  - Operating System \(Linux, Windows, macOS\)
+  - Npm
+  - MySQL
+  - NodeJS \(ver 10.x.x\)
+
+## How to Install
+   1.  _git clone_ [https://github.com/kuuhaku86/OnlineCinemaAJK.git](https://github.com/kuuhaku86/OnlineCinemaAJK.git)
+   2. Get in to folder OnlineCinemaAJK
+   3. Run in terminal _npm install --save_
+   4. Turn on the MySQL server
+   5. Import onlinecinemaajk.sql
+   6. Change in _/core/user.js_ and _db.js_ the setting according to your database setting
+
+# 3. How to Use
+
+## Features
 
 1. Login Page and Register Page
 2. Multiroom \(One server can consist many rooms\).
@@ -12,29 +42,7 @@ OnlineCinemaAJK is a web based application that have a purpose to connect every 
 4. Master room selection
 5. Change film
 
----
-
-## Installation
-
-* **Requirement**s:
-
-  * Operating System \(Linux, Windows, macOS\)
-  * Npm
-  * MySQL
-  * NodeJS \(ver 10.x.x\)
-
-* **How to Install this app:**
-    * _git clone_ [https://github.com/kuuhaku86/OnlineCinemaAJK.git](https://github.com/kuuhaku86/OnlineCinemaAJK.git)
-    * Get in to folder OnlineCinemaAJK
-    * Run in terminal _npm install --save_
-    * Turn on the MySQL server
-    * Import onlinecinemaajk.sql
-    * Change in _/core/user.js_ and _db.js_ the setting according to your database setting
-
----
-
-**How to use :**
-
+## Step to Use
 1. Turn on the node.js server in terminal with _node app.js_ command
 2. The computer that acts as the server can open the web with _localhost:8600_ address in the browser
 3. The computer that acts as common user can open the web with _IPServer:8600_ , you must change the _IPServer_ with the server IP address
@@ -52,3 +60,18 @@ OnlineCinemaAJK is a web based application that have a purpose to connect every 
    ![](/public/images/7.PNG)
 11. The master room can give his/her position as a master room to the other user in the room
     ![](/public/images/6.PNG)
+
+# 4. Conclusion
+We can use socket programming's technique to create fascinating app's like this one. It's run perfectly although use big bandwith to use. For further development, there are some advices that can be used like just send the movie's time and not the entire image, deprecate the login features, and make the user can upload the image.  
+
+# 5. Used Tools and Reference
+
+## Tools
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Node JS](https://nodejs.org/en/)
+- [Socket.IO](https://socket.io/)
+
+## Reference
+- https://socket.io/get-started/chat
+- https://betterprogramming.pub/video-stream-with-node-js-and-html5-320b3191a6b6
+- https://codeshack.io/basic-login-system-nodejs-express-mysql/
